@@ -31,5 +31,5 @@ Os dados das cartas são armazenadas em formato JSON e contêm os seguintes atri
 <h2>Objetivo Educacional:</h2>
 Além de ser uma forma divertida de jogar, este jogo oferece uma oportunidade de aprender sobre diferentes recursos hídricos, seus impactos no meio ambiente e na economia global.
 
-<i><b>Atividade Proposta: Alunos de Engenharia[...], Campus UniFOA/VR, Autores:[...]</b></i>
+<i><b>Atividade Proposta: Alunos de Engenharia[...], Campus UniFOA/VR, Autores:[...]</b></i></br>
 <a href="https://rhaianysouza.github.io/JogoTrunfo/Jogo do Trunfo/index.html">Clique Aqui para Ver o desenvolvimento</a>
