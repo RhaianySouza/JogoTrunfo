@@ -1,0 +1,133 @@
+<html>
+<head>
+
+<title>HOME: Wise Teens</title>
+<!--METATAG-->
+<meta charset='utf-8'/>
+<meta name='resource-type' content='document'/>
+<meta name='content-language' content='pt-br' />
+<meta name='DC.title' content='Wise Teens'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<meta property='og:url' content='https://#jogodotrunfo_unifoa#.com/'/>
+<meta name='author' content='Rhaiany Souza, Rhaiany Cezar de Souza'/>
+
+<meta name='description' content=''/>
+
+<meta name='keywords' content=''/>
+
+<link rel="shortcut icon" type="image/png" href="./IMAGE/logo_icon.png"/>
+
+
+<!--FACEBOOK-->
+<meta property='og:image' content=''/>
+<meta property='og:title' content='Wise Teens' />
+<meta property='og:site_name' content='Wise Teens'/>
+<meta property='og:url' content='https://#jogodotrunfo_unifoa#.com/'/>
+<meta property='og:description' content=''/>
+<meta property='og:type' content='School'/>
+
+<!--TWITTER-->
+<meta name='twitter:card' content='summary'/>
+<meta name='twitter:image' content=''/>
+<meta name='twitter:title' content='Wise Teens'>
+<meta name='twitter:url' content='https://#jogodotrunfo_unifoa#.com/'/>
+<meta name='twitter:description' content=''/>
+
+<!--DOC EXTERNOS-->
+<script src='./JS/javascript.js' defer></script>
+<link rel="stylesheet" href="./CSS/style.css"></link>
+<!--<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script> JQUERY--> 
+ 
+
+<!--FIM METATAG-->
+<meta content='#1a4201' name='theme-color'/>
+<meta content='#1a4201' name='apple-mobile-web-app-status-bar-style'/>
+<meta content='#1a4201' name='msapplication-navbutton-color'/>
+<meta content='#1a4201' media='(prefers-color-scheme: light)' name='theme-color'/>
+
+<style>
+    @font-face{
+    font-family: 'cy-grotesk-grand-dark';
+    src: url('FONT/cy-grotesk-grand-dark.otf') format('opentype');
+    }
+    @font-face{
+        font-family: 'Sprite Graffiti';
+        src: url('FONT/Sprite Graffiti.otf') format('opentype');
+    }
+body{
+    background: var(--cor6);
+    margin: 0;
+    width: 1600px;
+    height: 750px;
+    overflow: hidden;
+}
+header{
+    position: relative;
+    top: calc(50% - 100px);
+    text-align: justify;
+    height: 150px;
+}
+header div{
+    width: 700px;
+    height: 150px;
+    margin: 0 auto;
+}
+header a{
+    font-family: 'Sprite Graffiti';
+    text-decoration: none;
+    color: var(--cor5);
+    font-size: 100px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    transition: all .3s;
+    opacity: 0;
+    animation: buttonAnimate .3s forwards;
+    animation-delay: 5s;
+    top: -65px;
+}
+header a:hover{
+    color: var(--cor4);
+}
+body>img:nth-child(1),
+body>img:nth-child(2){   
+    width: 500px;
+    position: absolute;
+}
+header #logo1{
+    position: absolute; 
+    animation: title1 5s;
+    top: 10%;
+}
+header #logo2{
+    position: absolute; 
+    animation: title2 5s;
+    top: 0%;
+}
+@keyframes title1{
+    from{top: 150%}
+    to {top: 10%}
+  }
+@keyframes title2{
+    from{top: -150%}
+    to {top: 0%}
+  }
+ @keyframes buttonAnimate{
+    from{opacity: 0; font-size: 500px;}
+    to {opacity: 1; font-size: 100px;}
+  }
+</style>
+</head>
+<body>
+    <div style="width: 0px; height: 0px; position: absolute; top: -250px; left: -250px;"><img src="IMAGEM/2.png" alt="logoTrunfo_02.png" style="width: 800px;"/></div>
+    <header>
+        <div>
+            <img src="IMAGEM/logoBorder.png" alt="logoTrunfo_01.png" id="logo1"/>
+            <img src="IMAGEM/logoFilll.png" alt="logoTrunfo_02.png" id="logo2"/>
+        </div>
+        <a href="COMPONENTE/partida.html">Jogar</a>
+    </header>
+    <div style="width: 0px; height: 0px; position: absolute; bottom: -250px; right: -250px; transform: rotate(180deg);"><img src="IMAGEM/2.png" alt="logoTrunfo_02.png" style="width: 800px;"/></div>
+</body>
+</html>

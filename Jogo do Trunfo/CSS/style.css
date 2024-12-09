@@ -1,0 +1,25 @@
+:root{
+    --cor1: #000000;
+    --cor2: #fff;
+    --cor3: #fff;
+    --cor4: #4593c6;
+    --cor5: #ffc108;
+    --cor6: #d9f0ff;
+}
+@font-face{
+    font-family: 'cy-grotesk-grand-dark';
+    src: url('FONT/cy-grotesk-grand-dark.otf') format('opentype');
+}
+@font-face{
+    font-family: 'Sprite Graffiti';
+    src: url('FONT/Sprite Graffiti.otf') format('opentype');
+}
+@font-face{
+    font-family: 'NotoSans-VariableFont';
+    src: url('FONT/NotoSans-VariableFont_wdth,wght.ttf') format('truetype');
+}
+body{
+    background: var(--cor6);
+    margin: 0;
+    font-family: 'NotoSans-VariableFont', sans-serif;
+}
