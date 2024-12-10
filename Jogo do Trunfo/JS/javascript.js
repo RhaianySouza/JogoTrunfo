@@ -80,15 +80,6 @@ function exibirCarta() {
 
     // Exibe a carta do jogador atual (exibindo frame específico)
     document.getElementById(`frame${vez+1}`).classList.add('exibir'); 
-
-    // Exibe as opções para escolha de atributo
-    document.getElementById('ctrl').innerHTML = `
-        <h2>Escolha um Atributo para ${jogador}</h2>
-        <button onclick="atributo('volume')">Volume de Água</button>
-        <button onclick="atributo('profundidade')">Profundidade Média</button>
-        <button onclick="atributo('biodiversidade')">Biodiversidade</button>
-        <button onclick="atributo('importancia')">Importância Econômica</button>
-    `;
 }
 
 // Função chamada ao selecionar o atributo
@@ -119,6 +110,7 @@ function compararCartas(atributoValor) {
         // Pega a carta do jogador em questão
         if(i != vez){
             const cartaJogador = cartasJogadores[nomesParticipante[i]].shift(); // Remove a carta da mão do jogador
+            exibir(cartaJogador);
             // Pega o valor do atributo escolhido para comparação
             cartasDisputadas.push(cartaJogador);
             const atributoJogador = cartaJogador[atributoEscolhido];
