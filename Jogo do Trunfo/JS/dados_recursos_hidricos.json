@@ -1,222 +1,222 @@
 {
-  "A1": {
+  "1A": {
     "nome": "Rio Amazonas",
     "volume": 209000,
     "profundidade": 100,
     "biodiversidade": 5600,
     "importancia": 95
   },
-  "A2": {
+  "2A": {
     "nome": "Rio Yangtzé",
     "volume": 1000,
     "profundidade": 30,
     "biodiversidade": 4000,
     "importancia": 100
   },
-  "A3": {
+  "3A": {
     "nome": "Rio Nilo",
     "volume": 1500,
     "profundidade": 8,
     "biodiversidade": 2400,
     "importancia": 90
   },
-  "A4": {
+  "4A": {
     "nome": "Rio Ganges",
     "volume": 1500,
     "profundidade": 20,
     "biodiversidade": 5000,
     "importancia": 85
   },
-  "A5": {
+  "5A": {
     "nome": "Rio Mississipi",
     "volume": 3500,
     "profundidade": 15,
     "biodiversidade": 2000,
     "importancia": 70
   },
-  "A6": {
+  "6A": {
     "nome": "Rio Mekong",
     "volume": 4750,
     "profundidade": 18,
     "biodiversidade": 3500,
     "importancia": 80
   },
-  "A7": {
+  "7A": {
     "nome": "Rio Danúbio",
     "volume": 6300,
     "profundidade": 22,
     "biodiversidade": 2500,
     "importancia": 65
   },
-  "A8": {
+  "8A": {
     "nome": "Rio São Francisco",
     "volume": 3000,
     "profundidade": 25,
     "biodiversidade": 1500,
     "importancia": 75
   },
-  "B1": {
+  "1B": {
     "nome": "Lago Vitória",
     "volume": 2424,
     "profundidade": 40,
     "biodiversidade": 600,
     "importancia": 75
   },
-  "B2": {
+  "2B": {
     "nome": "Lago Baikal",
     "volume": 23600,
     "profundidade": 744,
     "biodiversidade": 1700,
     "importancia": 80
   },
-  "B3": {
+  "3B": {
     "nome": "Lago Tanganica",
     "volume": 18900,
     "profundidade": 570,
     "biodiversidade": 1500,
     "importancia": 80
   },
-  "B4": {
+  "4B": {
     "nome": "Lago Michigan",
     "volume": 1180,
     "profundidade": 70,
     "biodiversidade": 2000,
     "importancia": 65
   },
-  "B5": {
+  "5B": {
     "nome": "Lago Superior",
     "volume": 1200,
     "profundidade": 50,
     "biodiversidade": 2500,
     "importancia": 70
   },
-  "B6": {
+  "6B": {
     "nome": "Lago Caspiano",
     "volume": 78000,
     "profundidade": 208,
     "biodiversidade": 5000,
     "importancia": 90
   },
-  "B7": {
+  "7B": {
     "nome": "Lago Poyang",
     "volume": 1750,
     "profundidade": 30,
     "biodiversidade": 4000,
     "importancia": 85
   },
-  "B8": {
+  "8B": {
     "nome": "Lago Aral",
     "volume": 0.1,
     "profundidade": 10,
     "biodiversidade": 20,
     "importancia": 30
   },
-  "C1": {
+  "1C": {
     "nome": "Oceano Atlântico",
     "volume": 310410900,
     "profundidade": 3646,
     "biodiversidade": 200000,
     "importancia": 100
   },
-  "C2": {
+  "2C": {
     "nome": "Oceano Pacífico",
     "volume": 710000000,
     "profundidade": 4280,
     "biodiversidade": 2500,
     "importancia": 100
   },
-  "C3": {
+  "3C": {
     "nome": "Golfo do México",
     "volume": 2500000,
     "profundidade": 1615,
     "biodiversidade": 15000,
     "importancia": 90
   },
-  "C4": {
+  "4C": {
     "nome": "Mar Mediterrâneo",
     "volume": 3735000,
     "profundidade": 1500,
     "biodiversidade": 17000,
     "importancia": 80
   },
-  "C5": {
+  "5C": {
     "nome": "Mar de Bering",
     "volume": 2200000,
     "profundidade": 3000,
     "biodiversidade": 10000,
     "importancia": 85
   },
-  "C6": {
+  "6C": {
     "nome": "Mar da China Meridional",
     "volume": 3600000,
     "profundidade": 2800,
     "biodiversidade": 5000,
     "importancia": 90
   },
-  "C7": {
+  "7C": {
     "nome": "Mar de Coral",
     "volume": 1300000,
     "profundidade": 2400,
     "biodiversidade": 8000,
     "importancia": 80
   },
-  "C8": {
+  "8C": {
     "nome": "Mar do Caribe",
     "volume": 2500000,
     "profundidade": 1800,
     "biodiversidade": 7000,
     "importancia": 75
   },
-  "D1": {
+  "1D": {
     "nome": "Geleira de Antártica",
     "volume": 26500000,
     "profundidade": 2500,
     "biodiversidade": 30,
     "importancia": 75
   },
-  "D2": {
+  "2D": {
     "nome": "Água da Chuva",
     "volume": 50000000000,
     "profundidade": 0,
     "biodiversidade": 0,
     "importancia": 60
   },
-  "D3": {
+  "3D": {
     "nome": "Água Engarrafada",
     "volume": 0.5,
     "profundidade": 0,
     "biodiversidade": 0,
     "importancia": 65
   },
-  "D4": {
+  "4D": {
     "nome": "Geleira do Alasca",
     "volume": 1200000,
     "profundidade": 2000,
     "biodiversidade": 40,
     "importancia": 80
   },
-  "D5": {
+  "5D": {
     "nome": "Geleira do Himalaia",
     "volume": 1500000,
     "profundidade": 1800,
     "biodiversidade": 50,
     "importancia": 85
   },
-  "D6": {
+  "6D": {
     "nome": "Aquifero de Ogallala",
     "volume": 3000,
     "profundidade": 60,
     "biodiversidade": 600,
     "importancia": 150
   },
-  "D7": {
+  "7D": {
     "nome": "Mar Morto",
     "volume": 114,
     "profundidade": 304,
     "biodiversidade": 0,
     "importancia": 50
   },
-  "D8": {
+  "8D": {
     "nome": "Oásis de Siwa",
     "volume": 15000,
     "profundidade": 12,
