@@ -61,14 +61,12 @@ function exibir(carta) {
     const importancia = c.importancia;  // Importância econômica
 
     // Exibe a carta no HTML (a classe 'back' será preenchida com as informações)
-    document.querySelector(`#frame${i + 1} .back`).innerHTML = `
-        <h3>${key}</h3>
+    document.querySelector(`#frame${vez + 1} .back`).innerHTML  = `<h3>${chaveCarta}</h3>
         <div><img src="../../IMAGEM/${nome}.png" alt="${nome}"/></div>
         <p>Volume de Água: ${volume} Km³</p>
         <p>Profundidade Média: ${profundidade} m</p>
         <p>Biodiversidade: ${biodiversidade} espécies</p>
-        <p>Importância Econômica: ${importancia}</p>
-    `;
+        <p>Importância Econômica: ${importancia}</p>`;
 }
 
 // Função para exibir a carta do jogador da vez e exibir as opções de atributos
@@ -80,7 +78,7 @@ function exibirCarta() {
     exibir(carta);
 
     // Exibe a carta do jogador atual (exibindo frame específico)
-    document.getElementById(`frame${vez}`).classList.add('exibir'); 
+    document.getElementById(`frame${vez+1}`).classList.add('exibir'); 
 
     // Exibe as opções para escolha de atributo
     document.getElementById('ctrl').innerHTML = `
