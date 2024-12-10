@@ -1,7 +1,7 @@
 <html>
 <head>
 
-<title>HOME: Wise Teens</title>
+<title>Super Trunfo: Recursos Hídricos</title>
 <!--METATAG-->
 <meta charset='utf-8'/>
 <meta name='resource-type' content='document'/>
@@ -14,9 +14,6 @@
 <meta name='description' content=''/>
 
 <meta name='keywords' content=''/>
-
-<link rel="shortcut icon" type="image/png" href="./IMAGE/logo_icon.png"/>
-
 
 <!--FACEBOOK-->
 <meta property='og:image' content=''/>
@@ -53,6 +50,11 @@ header div{
     height: 62px;
     width: 95%;
     margin: 0 auto;
+    overflow: hidden;
+}
+h2{
+  color: var(--cor2);
+  text-transform: uppercase;
 }
 header div img{
     width: 100%;
@@ -74,6 +76,7 @@ nav{
 }
 #areaJogo{
     float: left;
+    width: calc(100% - 305px);
 }
 form{
     margin: 0;
@@ -86,7 +89,7 @@ form label{
     color: var(--cor6);
     font-weight: bold;
 }
-form input{
+form input, button{
     width: 95%;
     border-radius: 5px;
     padding: 10px 5px;
@@ -97,11 +100,18 @@ form input{
     border: 0;
     box-shadow: 0px 0px 5px #999 inset;
 }
+form button{
+  background: var(--cor3);
+  font-weight: bold;
+  color: var(--cor2);
+  box-shadow: -1px -1px 5px #333;
+  cursor: pointer;
+}
 #cards{
     width: 200px;
     height: 300px;
     position: absolute;
-    bottom: 35px;
+    bottom: calc(50% - 170px);
     left: 315px;
 }
 #cards .card,
@@ -109,8 +119,8 @@ form input{
 .card .flip .back{
     background: url('../IMAGEM/card.png');
     background-size: cover;
-    height: 300px;
-    width: 200px;
+    height: 320px;
+    width: 220px;
     border-radius: 10px;
     padding: 10px;
     position: absolute;
@@ -143,21 +153,22 @@ form input{
 /*CARTA JOGADOR*/
 .frame {
   position: absolute;
-
-  width: 200px;
-  height: 300px;
-  overflow: hidden;
+  width: 220px;
+  height: 320px;
   color: #fff;
   font-family: "Open Sans", Helvetica, sans-serif;
   border-radius: 10px;
+  display: none;
 }
 .frame .center {
+  width: 220px;
+  height: 320px;
   position: relative;
   margin: 0 auto; 
 }
 .frame .card{
-  width: 200px;
-  height: 300px;
+  width: 220px;
+  height: 320px;
   position: relative;
   border-radius: 10px;
 }
@@ -171,20 +182,20 @@ form input{
   height: 300px;
   position: absolute;
   backface-visibility: hidden;
+  box-shadow: -1px -1px 5px #333;
 }
 .frame .card .flip .back{
   background: var(--cor4);
 }
 .frame .card .flip{
-  width: 200px;
-  height: 300px;
+  width: 220px;
+  height: 320px;
   transform: rotatex(0deg);
   transition: all 1s;
-  box-shadow: 8px 10px 15px 0 #000;
   perspective: 1000px;
   transform-style: preserve-3d;
 }
-.frame .card:hover .flip{
+.exibir{
   transform: rotatex(180deg);
   box-shadow: 8px -10px 15px 0 rgba(0, 0, 0, 0.5);
 }
@@ -192,7 +203,7 @@ form input{
   z-index: 1;
   transform: rotatex(0deg);
 }
-.frame .card:hover .flip .front{
+.exibir .flip .front{
   transform: rotatex(0deg);
 }
 .frame .card .flip .front img{
@@ -207,19 +218,27 @@ form input{
   position: relative;
   z-index: 1;
 }
+.frame  .jogador{
+  color: var(--cor1);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
+}
 #frame1{
     top: 10px;
-    left: calc(50% - 100px);
+    left: calc(50% - 90px);
 }
 #frame2{
-
+   top: 10px;
+   left: calc(50% + 200px);
 }
 #frame3{
    bottom: 10px;
-    left: calc(50% - 100px);
+   left: calc(50% - 90px);
 }
 #frame4{
-
+   bottom: 10px;
+   left: calc(50% + 200px);
 }
 </style>
 </head>
@@ -227,7 +246,7 @@ form input{
     <nav>
         <header>
             <div>
-                <a href="../index.html" style="display: block;">
+                <a href="../index.html" style="display: block; height: 65px;">
                 <img src="../IMAGEM/logoBorder_white.png" alt="logoTrunfo_01.png" id="logo1"/>
                 <img src="../IMAGEM/logoFilll_white.png" alt="logoTrunfo_02.png" id="logo2"/></a>
             </div>
@@ -245,7 +264,7 @@ form input{
             <label for="parcipantes4">Nome do Parcipante</label>
             <input placeholder="Nome do Parcipantes" id="parcipantes4"/>
 
-            <button type="button" onclick="iniciarJogo()">Iniciar Jogo</button>
+            <div id="ctrl"><button type="button" onclick="carregarCartas()">Iniciar Jogo</button></div>
         </form>
     </nav>
     <div id="areaJogo">
@@ -257,7 +276,7 @@ form input{
             <div class="card"><div></div></div>
             <div class="card"><div></div></div>
         </div>
-        
+        <div id="atributo"></div>
         <div class="frame" id="frame1">
             <div class="center">
               <div class="card">
@@ -265,36 +284,47 @@ form input{
                   <div class="front"></div>
                   <div class="back"></div>
                 </div>
-             </div>
+              </div>
+            </div>
+            <div class="jogador"></div>
         </div>
+
         <div class="frame" id="frame2">
-            <div class="center">
-              <div class="card">
-                <div class="flip">
-                  <div class="front"></div>
-                  <div class="back"></div>
-                </div>
-             </div>
+          <div class="center">
+            <div class="card">
+              <div class="flip">
+                <div class="front"></div>
+                <div class="back"></div>
+              </div>
+            </div>
+          </div>
+          <div class="jogador"></div>
         </div>
+
         <div class="frame" id="frame3">
-            <div class="center">
-              <div class="card">
-                <div class="flip">
-                  <div class="front"></div>
-                  <div class="back"></div>
-                </div>
-             </div>
+          <div class="jogador"></div>
+          <div class="center">
+            <div class="card">
+              <div class="flip">
+                <div class="front"></div>
+                <div class="back"></div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="frame" id="frame4">
-            <div class="center">
-              <div class="card">
-                <div class="flip">
-                  <div class="front"></div>
-                  <div class="back"></div>
-                </div>
-             </div>
+          <div class="jogador"></div>
+          <div class="center">
+            <div class="card">
+              <div class="flip">
+                <div class="front"></div>
+                <div class="back"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        
+          
     </div>
 </body>
 </html>
