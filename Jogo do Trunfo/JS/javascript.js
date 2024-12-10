@@ -32,7 +32,7 @@ function distribuirCartas() {
     const numJogadores = jogadores.length;
     const cartasPorJogador = Math.floor(cartas.length / numJogadores);
     for (let i = 0; i < numJogadores; i++) {// Distribui as cartas
-        cartasJogadores[nome[i]] = cartas.slice(i * cartasPorJogador, (i + 1) * cartasPorJogador);
+        cartasJogadores[jogadores[vez]] = cartas.slice(i * cartasPorJogador, (i + 1) * cartasPorJogador);
     }
 }
 
