@@ -205,6 +205,7 @@ function iniciarJogo() {
         alert("O jogo deve ter entre 2 e 4 jogadores.");
         return;
     }
+    document.getElementById("btn").style.display = "none";
     document.getElementById("ctrl").innerHTML = '<button type="button" onclick="iniciarRodada()">Começar</button>'
     
     // Embaralhar as cartas e Distribui as cartas
