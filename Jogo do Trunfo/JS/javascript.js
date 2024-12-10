@@ -70,7 +70,7 @@ function exibir(carta,i) {
         <p>Importância Econômica: ${importancia}</p>`;
 
     // Exibe a carta do jogador atual (exibindo frame específico)
-    setTimeout(function(){document.getElementById(`frame${i+1}`).classList.add('exibir'); }, 1000)
+    setTimeout(function(){document.getElementById(`frame${i+1}`).classList.add('exibir'); }, 500)
     
 }
 
@@ -121,19 +121,10 @@ function compararCartas(atributoValor) {
                 maiorValor = atributoJogador;
                 vencedor = i;  // Atualiza o vencedor
                 cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
-            }
-                
-            // Caso de empate (mesmo valor no atributo), faz o desempate
-            else if (atributoJogador === maiorValor) {
-                // Caso de empate, escolhe aleatoriamente um atributo para desempatar
-                const atributosPossiveis = ['volume', 'profundidade', 'biodiversidade', 'importancia'];
-                const desempateAtributo = atributosPossiveis[Math.floor(Math.random() * atributosPossiveis.length)];
-                compararCartas(cartaVencedora[desempateAtributo]);  // Rechama a comparação com o desempate
-                return; // Saímos da função após o desempate
+                continue
             }
         }
     }
-
     // Se nenhum empate for encontrado, atualiza o vencedor e a carta vencedora
     atualizarVencedor(vencedor, cartaVencedora);
 }
