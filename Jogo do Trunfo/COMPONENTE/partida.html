@@ -208,11 +208,16 @@ button{
 }
 .frame .card .flip .back{
   transform: rotatex(180deg);
-}
-.frame .card .flip .back{
    margin: 2px;
   font-size: 14px;
 }
+ .frame .card .flip img{
+    width: -webkit-fill-available;
+    border-radius: 5px;
+    border: solid #fff 3px;
+    height: 115px;
+    object-fit: cover;
+ }
 .frame  .jogador{
   color: var(--cor1);
   text-transform: uppercase;
