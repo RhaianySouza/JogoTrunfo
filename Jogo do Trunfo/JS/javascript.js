@@ -35,6 +35,7 @@ function distribuirCartas() {
 
 // Função para iniciar a rodada
 function iniciarRodada() {
+    console.log(cartasJogadores[jogadores[vez]], jogadores[vez])
     if (cartasJogadores[jogadores[vez]].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
         exibirCarta(jogadores[vez]);
     }
