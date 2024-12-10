@@ -111,12 +111,21 @@ function compararCartas(atributoValor) {
 }
 
 // Função para atualizar o vencedor da rodada
-function atualizarVencedor(vencedor, cartaVencedora) {
+function atualizarVencedor(vencedor, cartaVencedora, cartasDisputadas) {
     // Mostrar o vencedor da rodada
     alert(`O vencedor da rodada é ${vencedor} com a carta ${cartaVencedora.nome}`);
 
-    // Transferir a carta vencedora para o vencedor (ou atualizar o estado do jogo)
-    cartasJogadores[vencedor].push(cartaVencedora); // Adiciona a carta vencedora na mão do vencedor
+    // Transferir as cartas disputadas para a mão do vencedor
+    for (let i = 0; i < cartasDisputadas.length; i++) {
+        // Adicionar a carta disputada na mão do vencedor
+        cartasJogadores[vencedor].push(cartasDisputadas[i]);
+        
+        // Limpar a carta disputada da mão do jogador
+        const index = cartasJogadores[cartasDisputadas[i].jogador].indexOf(cartasDisputadas[i]);
+        if (index !== -1) {
+            cartasJogadores[cartasDisputadas[i].jogador].splice(index, 1); // Remove a carta do jogador
+        }
+    }
 
     // Atualiza o display dos jogadores com a nova carta
     for (let i = 1; i <= jogadores.length; i++) {
@@ -127,15 +136,6 @@ function atualizarVencedor(vencedor, cartaVencedora) {
     iniciarRodada();
 }
 
-
-// Função para atualizar o vencedor da rodada
-function atualizarVencedor(vencedor) {
-    // Atualizar a carta de cada jogador de acordo com quem venceu
-    // Lógica para quem ganhou a rodada e pegar a carta do oponente
-
-    // Reinicia a rodada
-    iniciarRodada();
-}
 
 // Função para obter os participantes do jogo
 function obterParticipantes() {
