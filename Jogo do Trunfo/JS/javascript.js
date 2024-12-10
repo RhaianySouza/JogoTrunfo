@@ -106,7 +106,7 @@ function compararCartas(atributoValor) {
     let vencedor = jogadores[vez]; // Inicialmente, assume-se que o vencedor é o jogador da vez
     let maiorValor = atributoValor;
 
-    for(var i = 0; i< jogadores.length;i++{
+    for(var i = 0; i< jogadores.length;i++){
         if(i==vez){
             continue;
         };
