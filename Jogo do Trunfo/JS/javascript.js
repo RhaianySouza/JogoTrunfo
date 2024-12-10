@@ -171,3 +171,36 @@ function obterParticipantes() {
 
     return jogadores;
 }
+// Função para iniciar o jogo
+function iniciarJogo() {
+    // Obter os jogadores e garantir que o número de jogadores seja válido
+    const jogadores = obterParticipantes();
+    if (jogadores.length < 2 || jogadores.length > 4) {
+        alert("O jogo deve ter entre 2 e 4 jogadores.");
+        return;
+    }
+
+    // Embaralhar as cartas
+    const cartas = Object.values(dadosCartas); // Supondo que 'dadosCartas' contém as cartas em formato de objeto JSON
+    embaralharCartas(cartas);
+
+    // Distribuir as cartas igualmente entre os jogadores
+    let cartasPorJogador = Math.floor(cartas.length / jogadores.length);
+    let cartasJogadores = {};
+
+    // Distribuir as cartas entre os jogadores
+    for (let i = 0; i < jogadores.length; i++) {
+        cartasJogadores[jogadores[i]] = cartas.slice(i * cartasPorJogador, (i + 1) * cartasPorJogador);
+    }
+
+    // Exibir a primeira rodada
+    exibirCartasIniciais(cartasJogadores);
+    
+    // Definir o jogador que começa (aleatoriamente)
+    const jogadorIniciador = jogadores[Math.floor(Math.random() * jogadores.length)];
+    alert(`O jogo começa com ${jogadorIniciador}`);
+
+    // Preparar a interface para a rodada
+    document.getElementById("iniciarBtn").style.display = 'none'; // Esconder o botão de iniciar
+    document.getElementById("proximaRodadaBtn").style.display = 'inline-block'; // Exibir o botão para próxima rodada
+}
