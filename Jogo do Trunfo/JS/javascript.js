@@ -126,7 +126,7 @@ function compararCartas(atributoValor) {
             // Verifica se o jogador tem o maior valor para o atributo
             if (atributoJogador > maiorValor) {
                 maiorValor = atributoJogador;
-                vencedor = i;  // Atualiza o vencedor
+                vencedor = jogadores [i];  // Atualiza o vencedor
                 cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
                 continue
             
