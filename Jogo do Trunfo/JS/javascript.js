@@ -68,6 +68,10 @@ function exibir(carta,i) {
         <p>Profundidade Média: ${profundidade} m</p>
         <p>Biodiversidade: ${biodiversidade} espécies</p>
         <p>Importância Econômica: ${importancia}</p>`;
+
+    // Exibe a carta do jogador atual (exibindo frame específico)
+    setTimeout(function(){document.getElementById(`frame${vez+1}`).classList.add('exibir'); }, 3000)
+    
 }
 
 // Função para exibir a carta do jogador da vez e exibir as opções de atributos
@@ -77,9 +81,6 @@ function exibirCarta() {
     cartaSelecionada = carta; // Guarda a carta para uso posterior
 
     exibir(carta,vez);
-
-    // Exibe a carta do jogador atual (exibindo frame específico)
-    document.getElementById(`frame${vez+1}`).classList.add('exibir'); 
 }
 
 // Função chamada ao selecionar o atributo
