@@ -32,6 +32,7 @@ function embaralharCartas() {
 
 // Função para distribuir as cartas entre os jogadores
 function distribuirCartas() {
+    let cartasPorJogador = Math.floor(cartas.length / jogadores.length); 
     // Distribui as cartas para os jogadores
     for (let i = 0; i < jogadores.length; i++) {
         // Calcula o índice inicial e final das cartas para o jogador
