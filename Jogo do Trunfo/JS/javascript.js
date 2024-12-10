@@ -62,7 +62,7 @@ function exibir(carta,i) {
 
     //<div><img src="../IMAGEM/${nome}.jpg" alt="${nome}"/></div>
     // Exibe a carta no HTML (a classe 'back' será preenchida com as informações)
-    document.querySelector(`#frame${i + 1} .back`).innerHTML  = `<h3>${chaveCarta}</h3>
+    document.querySelector(`#frame${i + 1} .back`).innerHTML  = `<h3>${chaveCarta}: ${nome}</h3>
         
         <p>Volume de Água: ${volume} Km³</p>
         <p>Profundidade Média: ${profundidade} m</p>
@@ -140,10 +140,7 @@ function compararCartas(atributoValor) {
 
 // Função para atualizar o vencedor da rodada
 function atualizarVencedor(vencedor, cartaVencedora) {
-    // Mostrar o vencedor da rodada
-    alert(`O vencedor da rodada é ${nomesParticipante[vencedor]} com a carta ${cartaVencedora.nome}`);
-
-    // Transferir as cartas disputadas para a mão do vencedor
+        // Transferir as cartas disputadas para a mão do vencedor
     for (let i = 0; i < cartasDisputadas.length; i++) {
         // Adicionar a carta disputada na mão do vencedor
         cartasJogadores[nomesParticipante[vencedor]].push(cartasDisputadas[i]);
@@ -151,7 +148,10 @@ function atualizarVencedor(vencedor, cartaVencedora) {
     cartasDisputadas = [] //Limpa da memoria as cartas disputadas
     
     // Chama a função para iniciar a próxima rodada
-    document.getElementById("ctrl").innerHTML = '<button type="button" onclick="iniciarRodada()">Próxima Rodada</button>'
+    document.getElementById("ctrl").innerHTML = '<button type="button" onclick="iniciarRodada()">Próxima Rodada</button>';
+    
+    // Mostrar o vencedor da rodada
+    alert(`O vencedor da rodada é ${nomesParticipante[vencedor]} com a carta ${cartaVencedora.nome}`);
 }
 function ocultarCartas(){
     // Atualiza o display dos jogadores com a nova carta
