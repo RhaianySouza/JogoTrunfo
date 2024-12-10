@@ -106,10 +106,19 @@ function compararCartas(atributoValor) {
     let vencedor = jogadores[vez]; // Inicialmente, assume-se que o vencedor é o jogador da vez
     let maiorValor = atributoValor;
 
+    for(var i = 0; i< jogadores.length;i++{
+        if(i==vez){
+            continue;
+        };
+        const cartaJogador = cartasJogadores[nomesParticipante[i]].shift(); // Remove a carta da mão do jogador
+        exibir(cartaJogador,i);
+    }
     // Iterar sobre os outros jogadores (começando do índice 1, pois o índice 0 é o jogador da vez)
-    for (let i = 1; i < jogadores.length; i++) {
+    for (var i = 0; i < jogadores.length; i++) {
+        if(i==vez){
+            continue;
+        };
         // Pega a carta do jogador em questão
-        if(i != vez){
             const cartaJogador = cartasJogadores[nomesParticipante[i]].shift(); // Remove a carta da mão do jogador
             exibir(cartaJogador,i);
             // Pega o valor do atributo escolhido para comparação
@@ -122,7 +131,7 @@ function compararCartas(atributoValor) {
                 vencedor = i;  // Atualiza o vencedor
                 cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
                 continue
-            }
+            
         }
     }
     // Se nenhum empate for encontrado, atualiza o vencedor e a carta vencedora
