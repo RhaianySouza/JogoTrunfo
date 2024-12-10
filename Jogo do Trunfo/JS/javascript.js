@@ -210,5 +210,7 @@ function iniciarJogo() {
     // Definir o jogador que começa (aleatoriamente)
     const jogadorIniciador = jogadores[0];
     alert(`O jogo começa com ${jogadorIniciador}`);
+    
     document.getElementById("cards").style.display = "none";
+    iniciarRodada();
 }
