@@ -1,5 +1,5 @@
 let jogadores = [];
-let nomesParticipante = [];
+let nomesParticipante = []; //Nome dos Participntes
 let cartas = {}; // Aqui estarão as cartas embaralhadas
 let cartasJogadores = {}; // Armazenar as cartas para cada jogador
 let cartaSelecionada = null; // A carta que foi escolhida pelo jogador da vez
