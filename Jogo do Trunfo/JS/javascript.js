@@ -174,7 +174,7 @@ function obterParticipantes() {
     for (let i = 1; i <= b.length; i++) {
         const nomeJogador = document.getElementById(`parcipantes${b[i - 1]}`).value.trim();
         if (nomeJogador) {
-            jogadores.push(nomeJogador); // Adiciona jogador se o campo estiver preenchido
+            jogadores.push(b[i - 1]); // Adiciona jogador se o campo estiver preenchido
             document.getElementById(`frame${i}`).style.display = 'block';
             document.getElementById(`frame${i}`).getElementsByClassName('jogador')[0].innerHTML = nomeJogador;
         }
@@ -185,7 +185,7 @@ function obterParticipantes() {
 // Função para iniciar o jogo
 function iniciarJogo() {
     // Obter os jogadores e garantir que o número de jogadores seja válido
-    const jogadores = obterParticipantes();
+    jogadores = obterParticipantes();
     if (jogadores.length < 2 || jogadores.length > 4) {
         alert("O jogo deve ter entre 2 e 4 jogadores.");
         return;
