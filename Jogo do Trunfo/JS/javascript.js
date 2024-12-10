@@ -6,7 +6,7 @@ let atributoEscolhido = null; // Atributo escolhido para a comparação
 
 // Função para carregar as cartas do arquivo JSON
 async function carregarCartas() {
-    const response = await fetch('https://rhaianysouza.github.io/JogoTrunfo/Jogo%20do%20Trunfo/JS/dados_recursos_hidricos.json');
+    const response = await fetch('dados_recursos_hidricos.json');
     const dados = await response.json();
     cartas = Object.values(dados); // Pega os valores das cartas
     embaralharCartas(); // Chama a função para embaralhar as cartas
