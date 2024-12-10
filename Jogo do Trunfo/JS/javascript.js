@@ -50,7 +50,15 @@ function iniciarRodada() {
     atributoEscolhido = null;// Limpar a seleção do atributo
     ocultarCartas();
 }
-
+function exibirImg(titulo){
+    const tipo =['png','jpg','jpeg','webp'];
+    for(let i = 0; i<tipo.length; i++){
+        const caminho = `${titulo}.${tipo[i]}`; // Constrói o nome do arquivo
+        if (arquivoExiste(caminho)) { // Substituir por uma função que verifica a existência
+            return `../IMAGEM/${caminho}`; // Sai do loop interno ao encontrar o arquivo
+        }
+    }
+}
 // Função para exibir a carta do jogador
 function exibir(carta) {
     const c = carta;  // A carta do jogador
@@ -60,10 +68,11 @@ function exibir(carta) {
     const profundidade = c.profundidade;  // Profundidade média
     const biodiversidade = c.biodiversidade;  // Biodiversidade
     const importancia = c.importancia;  // Importância econômica
+    const img = exibirImg(nome);
 
     // Exibe a carta no HTML (a classe 'back' será preenchida com as informações)
     document.querySelector(`#frame${vez + 1} .back`).innerHTML  = `<h3>${chaveCarta}</h3>
-        <div><img src="../../IMAGEM/${nome}.png" alt="${nome}"/></div>
+        <div><img src="${img}" alt="${nome}"/></div>
         <p>Volume de Água: ${volume} Km³</p>
         <p>Profundidade Média: ${profundidade} m</p>
         <p>Biodiversidade: ${biodiversidade} espécies</p>
