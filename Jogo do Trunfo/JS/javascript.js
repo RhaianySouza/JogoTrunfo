@@ -51,7 +51,7 @@ function iniciarRodada() {
     ocultarCartas();
 }
 // Função para exibir a carta do jogador
-function exibir(carta) {
+function exibir(carta,i) {
     const c = carta;  // A carta do jogador
     const chaveCarta = c.key;  // Chave da carta
     const nome = c.nome; // Nome do recurso hídrico
@@ -62,7 +62,7 @@ function exibir(carta) {
 
     //<div><img src="../IMAGEM/${nome}.jpg" alt="${nome}"/></div>
     // Exibe a carta no HTML (a classe 'back' será preenchida com as informações)
-    document.querySelector(`#frame${vez + 1} .back`).innerHTML  = `<h3>${chaveCarta}</h3>
+    document.querySelector(`#frame${i + 1} .back`).innerHTML  = `<h3>${chaveCarta}</h3>
         
         <p>Volume de Água: ${volume} Km³</p>
         <p>Profundidade Média: ${profundidade} m</p>
@@ -76,7 +76,7 @@ function exibirCarta() {
     cartasDisputadas.push(carta);
     cartaSelecionada = carta; // Guarda a carta para uso posterior
 
-    exibir(carta);
+    exibir(carta,vez);
 
     // Exibe a carta do jogador atual (exibindo frame específico)
     document.getElementById(`frame${vez+1}`).classList.add('exibir'); 
@@ -110,7 +110,7 @@ function compararCartas(atributoValor) {
         // Pega a carta do jogador em questão
         if(i != vez){
             const cartaJogador = cartasJogadores[nomesParticipante[i]].shift(); // Remove a carta da mão do jogador
-            exibir(cartaJogador);
+            exibir(cartaJogador,i);
             // Pega o valor do atributo escolhido para comparação
             cartasDisputadas.push(cartaJogador);
             const atributoJogador = cartaJogador[atributoEscolhido];
@@ -118,7 +118,7 @@ function compararCartas(atributoValor) {
             // Verifica se o jogador tem o maior valor para o atributo
             if (atributoJogador > maiorValor) {
                 maiorValor = atributoJogador;
-                vencedor = jogadores[i];  // Atualiza o vencedor
+                vencedor = i;  // Atualiza o vencedor
                 cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
             }
                 
