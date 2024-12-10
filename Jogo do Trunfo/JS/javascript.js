@@ -158,7 +158,7 @@ function atualizarVencedor(vencedor, cartaVencedora) {
     }
 
     // Chama a função para iniciar a próxima rodada
-    iniciarRodada();
+    document.getElementById("ctrl").innerHTML = '<button type="button" onclick="iniciarRodada()">Próxima Rodada</button>'
 }
 
 // Função para obter os participantes do jogo
@@ -199,8 +199,7 @@ function iniciarJogo() {
             <button onclick="atributo('profundidade')">Profundidade Média</button>
             <button onclick="atributo('biodiversidade')">Biodiversidade</button>
             <button onclick="atributo('importancia')">Importância Econômica</button>
-            <button type="button" onclick="iniciarRodada()">Próxima Rodada</button>
-        `;
+            `;
     // Embaralhar as cartas
     embaralharCartas();  // Usar a função global que já foi definida
 
