@@ -49,6 +49,9 @@ function iniciarRodada() {
     };
     atributoEscolhido = null;// Limpar a seleção do atributo
     ocultarCartas();
+if(vez+1==jogadores.length){vez = 0}
+else{vez++};
+
 }
 // Função para exibir a carta do jogador
 function exibir(carta,i) {
@@ -149,7 +152,7 @@ function atualizarVencedor(vencedor, cartaVencedora) {
     document.getElementById("ctrl").innerHTML = '<button type="button" onclick="iniciarRodada()">Próxima Rodada</button>';
     
     // Mostrar o vencedor da rodada
-    alert(`O vencedor da rodada é ${nomesParticipante[vencedor]} com a carta ${cartaVencedora.nome}`);
+    alert(`O vencedor da rodada é ${nomesParticipante[vencedor]}`);
 }
 function ocultarCartas(){
     // Atualiza o display dos jogadores com a nova carta
