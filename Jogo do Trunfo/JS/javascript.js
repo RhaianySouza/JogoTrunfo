@@ -25,9 +25,7 @@ function embaralharCartas() {
 function distribuirCartas() {
     const numJogadores = jogadores.length;
     const cartasPorJogador = Math.floor(cartas.length / numJogadores);
-
     cartasJogadores = {};// Limpa o objeto de cartas dos jogadores
-
     for (let i = 0; i < numJogadores; i++) {// Distribui as cartas
         cartasJogadores[jogadores[i]] = cartas.slice(i * cartasPorJogador, (i + 1) * cartasPorJogador);
     }
@@ -90,7 +88,7 @@ function exibirCarta(jogador) {
 function atributo(atributo) {
     atributoEscolhido = atributo;
     // Exibir um novo botão para avançar a rodada
-    document.getElementById("ctrl").innerHTML += `
+    document.getElementById("ctrl").innerHTML = `
         <button onclick="avancarRodada()">Avançar Rodada</button>
     `;
 }
@@ -164,7 +162,6 @@ function atualizarVencedor(vencedor, cartaVencedora) {
 
 // Função para obter os participantes do jogo
 function obterParticipantes() {
-    const jogadores = [];
     const a = document.getElementsByClassName("frame");
     const b = [];
 
@@ -174,7 +171,6 @@ function obterParticipantes() {
             b.push(c + 1);
         }
     }
-
     for (let i = 1; i <= b.length; i++) {
         const nomeJogador = document.getElementById(`parcipantes${b[i - 1]}`).value.trim();
         if (nomeJogador) {
