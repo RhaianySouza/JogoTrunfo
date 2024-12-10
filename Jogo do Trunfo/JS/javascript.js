@@ -3,6 +3,7 @@ let cartas = []; // Aqui estarão as cartas embaralhadas
 let cartasJogadores = {}; // Armazenar as cartas para cada jogador
 let cartaSelecionada = null; // A carta que foi escolhida pelo jogador da vez
 let atributoEscolhido = null; // Atributo escolhido para a comparação
+let vez = 0;
 
 // Função para carregar as cartas do arquivo JSON
 async function carregarCartas() {
@@ -25,23 +26,23 @@ function distribuirCartas() {
     const numJogadores = jogadores.length;
     const cartasPorJogador = Math.floor(cartas.length / numJogadores);
 
-    // Limpa o objeto de cartas dos jogadores
-    cartasJogadores = {};
+    cartasJogadores = {};// Limpa o objeto de cartas dos jogadores
 
-    // Distribui as cartas
-    for (let i = 0; i < numJogadores; i++) {
+    for (let i = 0; i < numJogadores; i++) {// Distribui as cartas
         cartasJogadores[jogadores[i]] = cartas.slice(i * cartasPorJogador, (i + 1) * cartasPorJogador);
     }
 }
 
 // Função para iniciar a rodada
 function iniciarRodada() {
-    // Se ainda houver cartas disponíveis para o jogador da vez
-    if (cartasJogadores[jogadores[0]].length > 0) {
-        exibirCarta(jogadores[0]);
+    if (cartasJogadores[jogadores[vez]].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
+        exibirCarta(jogadores[vez]);
     }
-    // Limpar a seleção do atributo
-    atributoEscolhido = null;
+    atributoEscolhido = null;// Limpar a seleção do atributo
+    vez++;
+    if(vez == jogadores.length){
+        vez = 0;
+    }
 }
 
 // Função para exibir a carta do jogador
@@ -181,16 +182,16 @@ function obterParticipantes() {
             document.getElementById(`frame${i}`).getElementsByClassName('jogador')[0].innerHTML = nomeJogador;
         }
     }
-
-    document.getElementById("ctrl").innerHTML = `
-        <h2>Escolha um Atributo ${jogadores[0]}</h2>
-        <button onclick="atributo('volume')">Volume de Água</button>
-        <button onclick="atributo('profundidade')">Profundidade Média</button>
-        <button onclick="atributo('biodiversidade')">Biodiversidade</button>
-        <button onclick="atributo('importancia')">Importância Econômica</button>
-        <button type="button" onclick="iniciarRodada()">Próxima Rodada</button>
-    `;
-    document.getElementById("cards").style.display = "none";
+    if(jogadores.length>=2){
+        document.getElementById("ctrl").innerHTML = `
+            <h2>Escolha um Atributo ${jogadores[0]}</h2>
+            <button onclick="atributo('volume')">Volume de Água</button>
+            <button onclick="atributo('profundidade')">Profundidade Média</button>
+            <button onclick="atributo('biodiversidade')">Biodiversidade</button>
+            <button onclick="atributo('importancia')">Importância Econômica</button>
+            <button type="button" onclick="iniciarRodada()">Próxima Rodada</button>
+        `;
+    }
 
     return jogadores;
 }
@@ -203,7 +204,6 @@ function iniciarJogo() {
         alert("O jogo deve ter entre 2 e 4 jogadores.");
         return;
     }
-
     // Embaralhar as cartas
     embaralharCartas();  // Usar a função global que já foi definida
 
@@ -211,10 +211,9 @@ function iniciarJogo() {
     distribuirCartas();
 
     // Definir o jogador que começa (aleatoriamente)
-    const jogadorIniciador = jogadores[Math.floor(Math.random() * jogadores.length)];
+    const jogadorIniciador = jogadores[0];
     alert(`O jogo começa com ${jogadorIniciador}`);
 
     // Preparar a interface para a rodada
-    document.getElementById("iniciarBtn").style.display = 'none'; // Esconder o botão de iniciar
-    document.getElementById("proximaRodadaBtn").style.display = 'inline-block'; // Exibir o botão para próxima rodada
+    document.getElementById("ctrl").innerHTML ="<button type="button" onclick="iniciarRodada()">Próxima Rodada</button>";
 }
