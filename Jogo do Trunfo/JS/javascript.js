@@ -48,7 +48,7 @@ function iniciarRodada() {
 function exibir(i, jogador) {
     const carta = cartasJogadores[jogador][i];  // A carta do jogador
     const chaveCarta = Object.keys(cartasJogadores[jogador])[i];  // Chave da carta
-    const nome = carta.nome; //Nome do recurso hidrico
+    const nome = carta.nome; // Nome do recurso hídrico
     const volume = carta.volume;  // Volume de água
     const profundidade = carta.profundidade;  // Profundidade média
     const biodiversidade = carta.biodiversidade;  // Biodiversidade
@@ -210,9 +210,6 @@ function iniciarJogo() {
     // Distribuir as cartas igualmente entre os jogadores
     distribuirCartas();
 
-    // Exibir a primeira rodada
-    exibirCartasIniciais(cartasJogadores);
-    
     // Definir o jogador que começa (aleatoriamente)
     const jogadorIniciador = jogadores[Math.floor(Math.random() * jogadores.length)];
     alert(`O jogo começa com ${jogadorIniciador}`);
