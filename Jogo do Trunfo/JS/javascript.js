@@ -44,13 +44,37 @@ function iniciarRodada() {
     atributoEscolhido = null;
 }
 
-// Função para exibir a carta do jogador da vez
+// Função para exibir a carta do jogador
+function exibir(i, jogador) {
+    const carta = cartasJogadores[jogador][i];  // A carta do jogador
+    const chaveCarta = Object.keys(cartasJogadores[jogador])[i];  // Chave da carta
+    const volume = carta.volume;  // Volume de água
+    const profundidade = carta.profundidade;  // Profundidade média
+    const biodiversidade = carta.biodiversidade;  // Biodiversidade
+    const importancia = carta.importancia;  // Importância econômica
+
+    // Exibe a carta no HTML (a classe 'back' será preenchida com as informações)
+    document.querySelector(`#frame${i + 1} .back`).innerHTML = `
+        <h3>${chaveCarta}</h3>
+        <p>Volume de Água: ${volume} Km³</p>
+        <p>Profundidade Média: ${profundidade} m</p>
+        <p>Biodiversidade: ${biodiversidade} espécies</p>
+        <p>Importância Econômica: ${importancia}</p>
+    `;
+}
+
+// Função para exibir a carta do jogador da vez e exibir as opções de atributos
 function exibirCarta(jogador) {
-    const carta = cartasJogadores[jogador].shift(); // Retira a carta do jogador
+    // Retira a carta do jogador da vez
+    const carta = cartasJogadores[jogador].shift(); 
     cartaSelecionada = carta; // Guarda a carta para uso posterior
-    document.getElementById(`frame1`).classList.add('exibir'); // Exibe a carta do jogador atual
+
+    // Exibe a carta do jogador atual (exibindo frame específico)
+    document.getElementById(`frame1`).classList.add('exibir'); 
+
+    // Exibe as opções para escolha de atributo
     document.getElementById('ctrl').innerHTML = `
-        <h2>Escolha um Atributo ${jogador}</h2>
+        <h2>Escolha um Atributo para ${jogador}</h2>
         <button onclick="atributo('volume')">Volume de Água</button>
         <button onclick="atributo('profundidade')">Profundidade Média</button>
         <button onclick="atributo('biodiversidade')">Biodiversidade</button>
@@ -74,14 +98,12 @@ function avancarRodada() {
     // Comparar as cartas entre os jogadores
     compararCartas(atributoValor);
 }
+
 // Função para comparar as cartas e determinar o vencedor da rodada
 function compararCartas(atributoValor) {
     let cartaVencedora = cartaSelecionada;
     let vencedor = jogadores[0]; // Inicialmente, assume-se que o vencedor é o jogador da vez (jogador 0)
     let maiorValor = atributoValor;
-
-    // Exibir a carta do jogador atual (com a classe 'exibir')
-    document.getElementById("frame1").classList.add('exibir');
 
     // Iterar sobre os outros jogadores (começando do índice 1, pois o índice 0 é o jogador da vez)
     for (let i = 1; i < jogadores.length; i++) {
@@ -111,7 +133,7 @@ function compararCartas(atributoValor) {
 }
 
 // Função para atualizar o vencedor da rodada
-function atualizarVencedor(vencedor, cartaVencedora, cartasDisputadas) {
+function atualizarVencedor(vencedor, cartaVencedora) {
     // Mostrar o vencedor da rodada
     alert(`O vencedor da rodada é ${vencedor} com a carta ${cartaVencedora.nome}`);
 
@@ -135,7 +157,6 @@ function atualizarVencedor(vencedor, cartaVencedora, cartasDisputadas) {
     // Chama a função para iniciar a próxima rodada
     iniciarRodada();
 }
-
 
 // Função para obter os participantes do jogo
 function obterParticipantes() {
@@ -171,6 +192,7 @@ function obterParticipantes() {
 
     return jogadores;
 }
+
 // Função para iniciar o jogo
 function iniciarJogo() {
     // Obter os jogadores e garantir que o número de jogadores seja válido
@@ -181,17 +203,10 @@ function iniciarJogo() {
     }
 
     // Embaralhar as cartas
-    const cartas = Object.values(dadosCartas); // Supondo que 'dadosCartas' contém as cartas em formato de objeto JSON
-    embaralharCartas(cartas);
+    embaralharCartas();  // Usar a função global que já foi definida
 
     // Distribuir as cartas igualmente entre os jogadores
-    let cartasPorJogador = Math.floor(cartas.length / jogadores.length);
-    let cartasJogadores = {};
-
-    // Distribuir as cartas entre os jogadores
-    for (let i = 0; i < jogadores.length; i++) {
-        cartasJogadores[jogadores[i]] = cartas.slice(i * cartasPorJogador, (i + 1) * cartasPorJogador);
-    }
+    distribuirCartas();
 
     // Exibir a primeira rodada
     exibirCartasIniciais(cartasJogadores);
