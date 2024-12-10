@@ -16,6 +16,9 @@ async function carregarCartas() {
             ...dados[chave]
         };
     });
+    if (!Array.isArray(cartas)) {
+        cartas = Object.values(cartas);  // Converte para array se necessário
+    }
     embaralharCartas(); // Chama a função para embaralhar as cartas
 }
 
