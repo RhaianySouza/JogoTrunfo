@@ -8,7 +8,7 @@ let vez = 0;
 
 // Função para carregar as cartas do arquivo JSON
 async function carregarCartas() {
-    const response = await fetch('../../JS/dados_recursos_hidricos.json');
+    const response = await fetch('../JS/dados_recursos_hidricos.json');
     const dados = await response.json();
     cartas = Object.values(dados); // Pega os valores das cartas
     embaralharCartas(); // Chama a função para embaralhar as cartas
