@@ -29,10 +29,16 @@ function embaralharCartas() {
 
 // Função para distribuir as cartas entre os jogadores
 function distribuirCartas() {
-    const numJogadores = jogadores.length;
-    const cartasPorJogador = Math.floor(cartas.length / numJogadores);
-    for (let i = 0; i < numJogadores; i++) {// Distribui as cartas
-        cartasJogadores[jogadores[vez]] = cartas.slice(i * cartasPorJogador, (i + 1) * cartasPorJogador);
+    const numJogadores = jogadores.length;  // Número de jogadores
+    const cartasPorJogador = Math.floor(cartas.length / numJogadores);  // Cartas que cada jogador vai receber
+    // Distribui as cartas para os jogadores
+    for (let i = 0; i < numJogadores; i++) {
+        // Calcula o índice inicial e final das cartas para o jogador
+        const cartasDoJogador = cartas.slice(i * cartasPorJogador, (i + 1) * cartasPorJogador);
+        cartasJogadores[nomesParticipante[i]] = cartasDoJogador;
+        
+        // Incrementa a vez para o próximo jogador
+        vez = (vez + 1) % numJogadores;
     }
 }
 
