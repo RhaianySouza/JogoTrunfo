@@ -182,17 +182,6 @@ function obterParticipantes() {
             document.getElementById(`frame${i}`).getElementsByClassName('jogador')[0].innerHTML = nomeJogador;
         }
     }
-    if(jogadores.length>=2){
-        document.getElementById("ctrl").innerHTML = `
-            <h2>Escolha um Atributo ${jogadores[0]}</h2>
-            <button onclick="atributo('volume')">Volume de Água</button>
-            <button onclick="atributo('profundidade')">Profundidade Média</button>
-            <button onclick="atributo('biodiversidade')">Biodiversidade</button>
-            <button onclick="atributo('importancia')">Importância Econômica</button>
-            <button type="button" onclick="iniciarRodada()">Próxima Rodada</button>
-        `;
-    }
-
     return jogadores;
 }
 
@@ -204,6 +193,14 @@ function iniciarJogo() {
         alert("O jogo deve ter entre 2 e 4 jogadores.");
         return;
     }
+    document.getElementById("ctrl").innerHTML = `
+            <h2>Escolha um Atributo ${jogadores[0]}</h2>
+            <button onclick="atributo('volume')">Volume de Água</button>
+            <button onclick="atributo('profundidade')">Profundidade Média</button>
+            <button onclick="atributo('biodiversidade')">Biodiversidade</button>
+            <button onclick="atributo('importancia')">Importância Econômica</button>
+            <button type="button" onclick="iniciarRodada()">Próxima Rodada</button>
+        `;
     // Embaralhar as cartas
     embaralharCartas();  // Usar a função global que já foi definida
 
@@ -213,7 +210,5 @@ function iniciarJogo() {
     // Definir o jogador que começa (aleatoriamente)
     const jogadorIniciador = jogadores[0];
     alert(`O jogo começa com ${jogadorIniciador}`);
-
-    // Preparar a interface para a rodada
-    document.getElementById("ctrl").innerHTML ='<button type="button" onclick="iniciarRodada()">Próxima Rodada</button>';
+    document.getElementById("cards").style.display = "none";
 }
