@@ -1,7 +1,7 @@
 <html>
 <head>
 
-<title>HOME: Wise Teens</title>
+<title>Super Trunfo: Recursos Hídricos</title>
 <!--METATAG-->
 <meta charset='utf-8'/>
 <meta name='resource-type' content='document'/>
@@ -14,9 +14,6 @@
 <meta name='description' content=''/>
 
 <meta name='keywords' content=''/>
-
-<link rel="shortcut icon" type="image/png" href="./IMAGE/logo_icon.png"/>
-
 
 <!--FACEBOOK-->
 <meta property='og:image' content=''/>
@@ -34,8 +31,8 @@
 <meta name='twitter:description' content=''/>
 
 <!--DOC EXTERNOS-->
-<script src='./JS/javascript.js' defer></script>
-<link rel="stylesheet" href="./CSS/style.css"></link>
+<script src='.././JS/javascript.js' defer></script>
+<link rel="stylesheet" href=".././CSS/style.css"></link>
 <!--<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script> JQUERY--> 
  
 
@@ -46,88 +43,288 @@
 <meta content='#1a4201' media='(prefers-color-scheme: light)' name='theme-color'/>
 
 <style>
-    @font-face{
-    font-family: 'cy-grotesk-grand-dark';
-    src: url('FONT/cy-grotesk-grand-dark.otf') format('opentype');
-    }
-    @font-face{
-        font-family: 'Sprite Graffiti';
-        src: url('FONT/Sprite Graffiti.otf') format('opentype');
-    }
 body{
-    background: var(--cor6);
-    margin: 0;
-    width: 1600px;
-    height: 750px;
-    overflow: hidden;
-}
-header{
-    position: relative;
-    top: calc(50% - 100px);
-    text-align: justify;
-    height: 150px;
+
 }
 header div{
-    width: 700px;
-    height: 150px;
+    height: 62px;
+    width: 95%;
     margin: 0 auto;
+    overflow: hidden;
 }
-header a{
-    font-family: 'Sprite Graffiti';
-    text-decoration: none;
-    color: var(--cor5);
-    font-size: 100px;
-    text-align: center;
+h2{
+  color: var(--cor2);
+  text-transform: uppercase;
+}
+header div img{
+    width: 100%;
+    position: relative;
+}
+header div img:nth-child(1){
+    top: 5px;
+    left: 2px;
+}
+header div img:nth-child(2){
+    top: -60px;
+}
+nav{
+    width: 300px;
+    height: 100%;
+    background: var(--cor4);
+    margin: 0;
+    float: left;
+}
+#areaJogo{
+    float: left;
+    width: calc(100% - 305px);
+}
+form{
+    margin: 0;
+    padding: 1px;
+}
+form label{
     display: block;
     margin: 0 auto;
-    position: relative;
-    transition: all .3s;
-    opacity: 0;
-    animation: buttonAnimate .3s forwards;
-    animation-delay: 5s;
-    top: -65px;
+    width: 95%;
+    color: var(--cor6);
+    font-weight: bold;
 }
-header a:hover{
-    color: var(--cor4);
+form input, button{
+    width: 95%;
+    border-radius: 5px;
+    padding: 10px 5px;
+    display: block;
+    margin: 10px auto;
+    margin-top: 0;
+    outline: none;
+    border: 0;
+    box-shadow: 0px 0px 5px #999 inset;
 }
-body>img:nth-child(1),
-body>img:nth-child(2){   
-    width: 500px;
+form button{
+  background: var(--cor3);
+  font-weight: bold;
+  color: var(--cor2);
+  box-shadow: -1px -1px 5px #333;
+  cursor: pointer;
+}
+#cards{
+    width: 200px;
+    height: 300px;
     position: absolute;
+    bottom: calc(50% - 170px);
+    left: 315px;
 }
-header #logo1{
-    position: absolute; 
-    animation: title1 5s;
-    top: 10%;
+#cards .card,
+.card .flip .front,
+.card .flip .back{
+    background: url('../IMAGEM/card.png');
+    background-size: cover;
+    height: 320px;
+    width: 220px;
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    box-shadow: -1px -1px 5px #154d7d;
+    bottom: 0px;
+    left: 0px;
 }
-header #logo2{
-    position: absolute; 
-    animation: title2 5s;
-    top: 0%;
+#cards .card div{
+    height: -webkit-fill-available;
+    border-radius: 15PX;
+    border: solid #fff;
+
 }
-@keyframes title1{
-    from{top: 150%}
-    to {top: 10%}
-  }
-@keyframes title2{
-    from{top: -150%}
-    to {top: 0%}
-  }
- @keyframes buttonAnimate{
-    from{opacity: 0; font-size: 500px;}
-    to {opacity: 1; font-size: 100px;}
-  }
+#cards .card:nth-child(1){
+    bottom: 15px;
+    left: 15px;
+}
+#cards .card:nth-child(2){
+    bottom: 10px;
+    left: 10px;
+}
+#cards .card:nth-child(3){
+    bottom: 5px;
+    left: 5px;
+}
+#cards .card:nth-child(4){
+    bottom: 0px;
+    left: 0px;
+}
+/*CARTA JOGADOR*/
+.frame {
+  position: absolute;
+  width: 220px;
+  height: 320px;
+  color: #fff;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  border-radius: 10px;
+  display: none;
+}
+.frame .center {
+  width: 220px;
+  height: 320px;
+  position: relative;
+  margin: 0 auto; 
+}
+.frame .card{
+  width: 220px;
+  height: 320px;
+  position: relative;
+  border-radius: 10px;
+}
+.frame .card .flip .front,
+.frame .card .flip .back{
+  background: url(../IMAGEM/card.png);
+  background-size: auto 320px;
+  background-position: center;
+  border-radius: 5px;
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  backface-visibility: hidden;
+  box-shadow: -1px -1px 5px #333;
+}
+.frame .card .flip .back{
+  background: var(--cor4);
+}
+.frame .card .flip{
+  width: 220px;
+  height: 320px;
+  transform: rotatex(0deg);
+  transition: all 1s;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+.exibir{
+  transform: rotatex(180deg);
+  box-shadow: 8px -10px 15px 0 rgba(0, 0, 0, 0.5);
+}
+.frame .card .flip .front{
+  z-index: 1;
+  transform: rotatex(0deg);
+}
+.exibir .flip .front{
+  transform: rotatex(0deg);
+}
+.frame .card .flip .front img{
+  animation: cicle .3s alternate infinite;
+  transform-origin: 50% 100%;
+}
+.frame .card .flip .back{
+  transform: rotatex(180deg);
+}
+.frame .card .flip .back img{
+  animation: helicopter .6s alternate infinite;
+  position: relative;
+  z-index: 1;
+}
+.frame  .jogador{
+  color: var(--cor1);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
+}
+#frame1{
+    top: 10px;
+    left: calc(50% - 90px);
+}
+#frame2{
+   top: 10px;
+   left: calc(50% + 200px);
+}
+#frame3{
+   bottom: 10px;
+   left: calc(50% - 90px);
+}
+#frame4{
+   bottom: 10px;
+   left: calc(50% + 200px);
+}
 </style>
 </head>
 <body>
-    <div style="width: 0px; height: 0px; position: absolute; top: -250px; left: -250px;"><img src="IMAGEM/2.png" alt="logoTrunfo_02.png" style="width: 800px;"/></div>
-    <header>
-        <div>
-            <img src="IMAGEM/logoBorder.png" alt="logoTrunfo_01.png" id="logo1"/>
-            <img src="IMAGEM/logoFilll.png" alt="logoTrunfo_02.png" id="logo2"/>
+    <nav>
+        <header>
+            <div>
+                <a href="../index.html" style="display: block; height: 65px;">
+                <img src="../IMAGEM/logoBorder_white.png" alt="logoTrunfo_01.png" id="logo1"/>
+                <img src="../IMAGEM/logoFilll_white.png" alt="logoTrunfo_02.png" id="logo2"/></a>
+            </div>
+        </header>
+        <form>
+            <label for="parcipantes1">Nome do Parcipante</label>
+            <input placeholder="Nome do Parcipantes" id="parcipantes1"/>
+
+            <label for="parcipantes2">Nome do Parcipante</label>
+            <input placeholder="Nome do Parcipantes" id="parcipantes2"/>
+
+            <label for="parcipantes3">Nome do Parcipante</label>
+            <input placeholder="Nome do Parcipantes" id="parcipantes3"/>
+
+            <label for="parcipantes4">Nome do Parcipante</label>
+            <input placeholder="Nome do Parcipantes" id="parcipantes4"/>
+
+            <div id="ctrl"><button type="button" onclick="carregarCartas()">Iniciar Jogo</button></div>
+        </form>
+    </nav>
+    <div id="areaJogo">
+        <div id="cards">
+            <div class="card"><div></div></div>
+            <div class="card"><div></div></div>
+            <div class="card"><div></div></div>
+            <div class="card"><div></div></div>
+            <div class="card"><div></div></div>
+            <div class="card"><div></div></div>
         </div>
-        <a href="COMPONENTE/partida.html">Jogar</a>
-    </header>
-    <div style="width: 0px; height: 0px; position: absolute; bottom: -250px; right: -250px; transform: rotate(180deg);"><img src="IMAGEM/2.png" alt="logoTrunfo_02.png" style="width: 800px;"/></div>
+        <div id="atributo"></div>
+        <div class="frame" id="frame1">
+            <div class="center">
+              <div class="card">
+                <div class="flip">
+                  <div class="front"></div>
+                  <div class="back"></div>
+                </div>
+              </div>
+            </div>
+            <div class="jogador"></div>
+        </div>
+
+        <div class="frame" id="frame2">
+          <div class="center">
+            <div class="card">
+              <div class="flip">
+                <div class="front"></div>
+                <div class="back"></div>
+              </div>
+            </div>
+          </div>
+          <div class="jogador"></div>
+        </div>
+
+        <div class="frame" id="frame3">
+          <div class="jogador"></div>
+          <div class="center">
+            <div class="card">
+              <div class="flip">
+                <div class="front"></div>
+                <div class="back"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="frame" id="frame4">
+          <div class="jogador"></div>
+          <div class="center">
+            <div class="card">
+              <div class="flip">
+                <div class="front"></div>
+                <div class="back"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+    </div>
 </body>
 </html>
