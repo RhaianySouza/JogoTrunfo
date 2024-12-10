@@ -1,6 +1,6 @@
 let jogadores = [];
 let nomesParticipante = [];
-let cartas = []; // Aqui estarão as cartas embaralhadas
+let cartas = {}; // Aqui estarão as cartas embaralhadas
 let cartasJogadores = {}; // Armazenar as cartas para cada jogador
 let cartaSelecionada = null; // A carta que foi escolhida pelo jogador da vez
 let atributoEscolhido = null; // Atributo escolhido para a comparação
@@ -10,7 +10,12 @@ let vez = 0;
 async function carregarCartas() {
     const response = await fetch('../JS/dados_recursos_hidricos.json');
     const dados = await response.json();
-    cartas = Object.values(dados); // Pega os valores das cartas
+    cartas = Object.keys(dados).map(chave => {
+        return {
+            key: chave,
+            ...dados[chave]
+        };
+    });
     embaralharCartas(); // Chama a função para embaralhar as cartas
 }
 
@@ -26,15 +31,14 @@ function embaralharCartas() {
 function distribuirCartas() {
     const numJogadores = jogadores.length;
     const cartasPorJogador = Math.floor(cartas.length / numJogadores);
-    cartasJogadores = {};// Limpa o objeto de cartas dos jogadores
     for (let i = 0; i < numJogadores; i++) {// Distribui as cartas
-        cartasJogadores[jogadores[i]] = cartas.slice(i * cartasPorJogador, (i + 1) * cartasPorJogador);
+        cartasJogadores[nome[i]] = cartas.slice(i * cartasPorJogador, (i + 1) * cartasPorJogador);
     }
 }
 
 // Função para iniciar a rodada
 function iniciarRodada() {
-    if (cartasJogadores[jogadores[vez]].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
+    if (cartasJogadores[nomesParticipante].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
         exibirCarta(jogadores[vez]);
     }
     atributoEscolhido = null;// Limpar a seleção do atributo
@@ -46,17 +50,17 @@ function iniciarRodada() {
 
 // Função para exibir a carta do jogador
 function exibir(i, jogador) {
-    const carta = cartasJogadores[jogador][i];  // A carta do jogador
-    const chaveCarta = Object.keys(cartasJogadores[jogador])[i];  // Chave da carta
-    const nome = carta.nome; // Nome do recurso hídrico
-    const volume = carta.volume;  // Volume de água
-    const profundidade = carta.profundidade;  // Profundidade média
-    const biodiversidade = carta.biodiversidade;  // Biodiversidade
-    const importancia = carta.importancia;  // Importância econômica
+    const c = cartasJogadores[jogador][i];  // A carta do jogador
+    const chaveCarta = c.key;  // Chave da carta
+    const nome = c.nome; // Nome do recurso hídrico
+    const volume = c.volume;  // Volume de água
+    const profundidade = c.profundidade;  // Profundidade média
+    const biodiversidade = c.biodiversidade;  // Biodiversidade
+    const importancia = c.importancia;  // Importância econômica
 
     // Exibe a carta no HTML (a classe 'back' será preenchida com as informações)
     document.querySelector(`#frame${i + 1} .back`).innerHTML = `
-        <h3>${chaveCarta}</h3>
+        <h3>${key}</h3>
         <div><img src="../../IMAGEM/${nome}.png" alt="${nome}"/></div>
         <p>Volume de Água: ${volume} Km³</p>
         <p>Profundidade Média: ${profundidade} m</p>
