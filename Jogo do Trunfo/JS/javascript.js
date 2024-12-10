@@ -17,6 +17,7 @@ async function carregarCartas() {
         };
     });
     embaralharCartas(); // Chama a função para embaralhar as cartas
+    distribuirCartas(); // Chama a função para distribuir as cartas
 }
 
 // Função para embaralhar as cartas
@@ -205,14 +206,8 @@ function iniciarJogo() {
             <button onclick="atributo('biodiversidade')">Biodiversidade</button>
             <button onclick="atributo('importancia')">Importância Econômica</button>
             `;
-    // Embaralhar as cartas
+    // Embaralhar as cartas e Distribui as cartas
     carregarCartas();
-
-    // Distribuir as cartas igualmente entre os jogadores
-    distribuirCartas();
-
-    // Definir o jogador que começa (aleatoriamente)
-    const jogadorIniciador = jogadores[0];
     
     alert(`O jogo começa com ${nomesParticipante[0]}`);
     
