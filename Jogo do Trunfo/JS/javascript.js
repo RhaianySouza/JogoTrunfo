@@ -70,7 +70,7 @@ function exibir(carta,i) {
         <p>Importância Econômica: ${importancia}</p>`;
 
     // Exibe a carta do jogador atual (exibindo frame específico)
-    setTimeout(function(){document.getElementById(`frame${vez+1}`).classList.add('exibir'); }, 3000)
+    setTimeout(function(){document.getElementById(`frame${i+1}`).classList.add('exibir'); }, 1000)
     
 }
 
