@@ -5,6 +5,7 @@ let cartasJogadores = {}; // Armazenar as cartas para cada jogador
 let cartaSelecionada = null; // A carta que foi escolhida pelo jogador da vez
 let atributoEscolhido = null; // Atributo escolhido para a comparação
 let vez = 0;
+let cartasDisputadas = [];
 
 // Função para carregar as cartas do arquivo JSON
 async function carregarCartas() {
@@ -42,19 +43,16 @@ function distribuirCartas() {
 
 // Função para iniciar a rodada
 function iniciarRodada() {
-    if (cartasJogadores[nomesParticipante].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
+    if (cartasJogadores[nomesParticipante[vez]].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
         exibirCarta(jogadores[vez]);
     };
     atributoEscolhido = null;// Limpar a seleção do atributo
-    vez++;
-    if(vez == jogadores.length){
-        vez = 0;
-    }
+    ocultarCartas();
 }
 
 // Função para exibir a carta do jogador
-function exibir(i, jogador) {
-    const c = cartasJogadores[jogador][i];  // A carta do jogador
+function exibir(carta) {
+    const c = carta;  // A carta do jogador
     const chaveCarta = c.key;  // Chave da carta
     const nome = c.nome; // Nome do recurso hídrico
     const volume = c.volume;  // Volume de água
@@ -74,13 +72,15 @@ function exibir(i, jogador) {
 }
 
 // Função para exibir a carta do jogador da vez e exibir as opções de atributos
-function exibirCarta(jogador) {
-    // Retira a carta do jogador da vez
-    const carta = cartasJogadores[jogador].shift(); 
+function exibirCarta() {
+    const carta = cartasJogadores[nomesParticipante[vez]].shift(); // Retira a carta do jogador da vez
+    cartasDisputadas.push(carta);
     cartaSelecionada = carta; // Guarda a carta para uso posterior
 
+    exibir(carta);
+
     // Exibe a carta do jogador atual (exibindo frame específico)
-    document.getElementById(`frame1`).classList.add('exibir'); 
+    document.getElementById(`frame${vez}`).classList.add('exibir'); 
 
     // Exibe as opções para escolha de atributo
     document.getElementById('ctrl').innerHTML = `
@@ -96,6 +96,7 @@ function exibirCarta(jogador) {
 function atributo(atributo) {
     atributoEscolhido = atributo;
     // Exibir um novo botão para avançar a rodada
+    avacarRodada();
     document.getElementById("ctrl").innerHTML = `
         <button onclick="avancarRodada()">Avançar Rodada</button>
     `;
@@ -104,37 +105,40 @@ function atributo(atributo) {
 // Função para avançar a rodada
 function avancarRodada() {
     const atributoValor = cartaSelecionada[atributoEscolhido]; // Pega o valor do atributo escolhido
-
     // Comparar as cartas entre os jogadores
-    compararCartas(atributoValor);
+    compararCartas(atributoEscolhido);
 }
 
 // Função para comparar as cartas e determinar o vencedor da rodada
 function compararCartas(atributoValor) {
     let cartaVencedora = cartaSelecionada;
-    let vencedor = jogadores[0]; // Inicialmente, assume-se que o vencedor é o jogador da vez (jogador 0)
+    let vencedor = jogadores[vez]; // Inicialmente, assume-se que o vencedor é o jogador da vez
     let maiorValor = atributoValor;
 
     // Iterar sobre os outros jogadores (começando do índice 1, pois o índice 0 é o jogador da vez)
     for (let i = 1; i < jogadores.length; i++) {
         // Pega a carta do jogador em questão
-        const cartaJogador = cartasJogadores[jogadores[i]].shift(); // Remove a carta da mão do jogador
-        // Pega o valor do atributo escolhido para comparação
-        const atributoJogador = cartaJogador[atributoEscolhido];
-
-        // Verifica se o jogador tem o maior valor para o atributo
-        if (atributoJogador > maiorValor) {
-            maiorValor = atributoJogador;
-            vencedor = jogadores[i];  // Atualiza o vencedor
-            cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
-        }
-        // Caso de empate (mesmo valor no atributo), faz o desempate
-        else if (atributoJogador === maiorValor) {
-            // Caso de empate, escolhe aleatoriamente um atributo para desempatar
-            const atributosPossiveis = ['volume', 'profundidade', 'biodiversidade', 'importancia'];
-            const desempateAtributo = atributosPossiveis[Math.floor(Math.random() * atributosPossiveis.length)];
-            compararCartas(cartaVencedora[desempateAtributo]);  // Rechama a comparação com o desempate
-            return; // Saímos da função após o desempate
+        if(i != vez){
+            const cartaJogador = cartasJogadores[nomesParticipante[i]].shift(); // Remove a carta da mão do jogador
+            // Pega o valor do atributo escolhido para comparação
+            cartasDisputadas.push(cartaJogador);
+            const atributoJogador = cartaJogador[atributoEscolhido];
+    
+            // Verifica se o jogador tem o maior valor para o atributo
+            if (atributoJogador > maiorValor) {
+                maiorValor = atributoJogador;
+                vencedor = jogadores[i];  // Atualiza o vencedor
+                cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
+            }
+                
+            // Caso de empate (mesmo valor no atributo), faz o desempate
+            else if (atributoJogador === maiorValor) {
+                // Caso de empate, escolhe aleatoriamente um atributo para desempatar
+                const atributosPossiveis = ['volume', 'profundidade', 'biodiversidade', 'importancia'];
+                const desempateAtributo = atributosPossiveis[Math.floor(Math.random() * atributosPossiveis.length)];
+                compararCartas(cartaVencedora[desempateAtributo]);  // Rechama a comparação com o desempate
+                return; // Saímos da função após o desempate
+            }
         }
     }
 
@@ -145,29 +149,24 @@ function compararCartas(atributoValor) {
 // Função para atualizar o vencedor da rodada
 function atualizarVencedor(vencedor, cartaVencedora) {
     // Mostrar o vencedor da rodada
-    alert(`O vencedor da rodada é ${vencedor} com a carta ${cartaVencedora.nome}`);
+    alert(`O vencedor da rodada é ${nomesParticipante[vencedor]} com a carta ${cartaVencedora.nome}`);
 
     // Transferir as cartas disputadas para a mão do vencedor
     for (let i = 0; i < cartasDisputadas.length; i++) {
         // Adicionar a carta disputada na mão do vencedor
-        cartasJogadores[vencedor].push(cartasDisputadas[i]);
-        
-        // Limpar a carta disputada da mão do jogador
-        const index = cartasJogadores[cartasDisputadas[i].jogador].indexOf(cartasDisputadas[i]);
-        if (index !== -1) {
-            cartasJogadores[cartasDisputadas[i].jogador].splice(index, 1); // Remove a carta do jogador
-        }
+        cartasJogadores[nomesParticipante[vencedor]].push(cartasDisputadas[i]);
     }
-
+    cartasDisputadas = [] //Limpa da memoria as cartas disputadas
+    
+    // Chama a função para iniciar a próxima rodada
+    document.getElementById("ctrl").innerHTML = '<button type="button" onclick="iniciarRodada()">Próxima Rodada</button>'
+}
+function ocultarCartas(){
     // Atualiza o display dos jogadores com a nova carta
     for (let i = 1; i <= jogadores.length; i++) {
         document.getElementById(`frame${i}`).classList.remove('exibir'); // Remover a classe 'exibir' das cartas
     }
-
-    // Chama a função para iniciar a próxima rodada
-    document.getElementById("ctrl").innerHTML = '<button type="button" onclick="iniciarRodada()">Próxima Rodada</button>'
 }
-
 // Função para obter os participantes do jogo
 function obterParticipantes() {
     const a = document.getElementsByClassName("frame");
