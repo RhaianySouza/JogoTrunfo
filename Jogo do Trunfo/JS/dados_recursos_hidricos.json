@@ -176,7 +176,7 @@
   },
   "2D": {
     "nome": "Água da Chuva",
-    "volume": 50000000000,
+    "volume": 0.005,
     "profundidade": 0,
     "biodiversidade": 0,
     "importancia": 60
