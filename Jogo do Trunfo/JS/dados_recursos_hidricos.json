@@ -1,4 +1,4 @@
-var cartas = {
+{
   "A1": {
     "nome": "Rio Amazonas",
     "volume": 209000,
