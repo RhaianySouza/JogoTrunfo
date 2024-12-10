@@ -32,16 +32,12 @@ function embaralharCartas() {
 
 // Função para distribuir as cartas entre os jogadores
 function distribuirCartas() {
-    const numJogadores = jogadores.length;  // Número de jogadores
-    const cartasPorJogador = Math.floor(cartas.length / numJogadores);  // Cartas que cada jogador vai receber
     // Distribui as cartas para os jogadores
-    for (let i = 0; i < numJogadores; i++) {
+    for (let i = 0; i < jogadores.length; i++) {
         // Calcula o índice inicial e final das cartas para o jogador
-        const cartasDoJogador = cartas.slice(i * cartasPorJogador, (i + 1) * cartasPorJogador);
-        cartasJogadores[nomesParticipante[i]] = cartasDoJogador;
-        
-        // Incrementa a vez para o próximo jogador
-        vez = (vez + 1) % numJogadores;
+        const inicio = i * cartasPorJogador;
+        const fim = inicio + cartasPorJogador;
+        cartasJogadores[nomesParticipante[i]] = cartas.slice(inicio, fim);  // Atribui as cartas ao jogador
     }
 }
 
@@ -49,7 +45,7 @@ function distribuirCartas() {
 function iniciarRodada() {
     if (cartasJogadores[nomesParticipante].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
         exibirCarta(jogadores[vez]);
-    }
+    };
     atributoEscolhido = null;// Limpar a seleção do atributo
     vez++;
     if(vez == jogadores.length){
