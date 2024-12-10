@@ -16,9 +16,6 @@ async function carregarCartas() {
             ...dados[chave]
         };
     });
-    if (!Array.isArray(cartas)) {
-        cartas = Object.values(cartas);  // Converte para array se necessário
-    }
     embaralharCartas(); // Chama a função para embaralhar as cartas
 }
 
@@ -38,7 +35,7 @@ function distribuirCartas() {
         // Calcula o índice inicial e final das cartas para o jogador
         const inicio = i * cartasPorJogador;
         const fim = inicio + cartasPorJogador;
-        cartasJogadores[nomesParticipante[i]] = cartas.slice(inicio, fim);  // Atribui as cartas ao jogador
+        cartasJogadores[nomesParticipante[i]] = Object.values(cartas).slice(inicio, fim);  // Atribui as cartas ao jogador
     }
 }
 
