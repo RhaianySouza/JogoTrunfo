@@ -48,6 +48,7 @@ function iniciarRodada() {
 function exibir(i, jogador) {
     const carta = cartasJogadores[jogador][i];  // A carta do jogador
     const chaveCarta = Object.keys(cartasJogadores[jogador])[i];  // Chave da carta
+    const nome = carta.nome; //Nome do recurso hidrico
     const volume = carta.volume;  // Volume de água
     const profundidade = carta.profundidade;  // Profundidade média
     const biodiversidade = carta.biodiversidade;  // Biodiversidade
@@ -56,6 +57,7 @@ function exibir(i, jogador) {
     // Exibe a carta no HTML (a classe 'back' será preenchida com as informações)
     document.querySelector(`#frame${i + 1} .back`).innerHTML = `
         <h3>${chaveCarta}</h3>
+        <div><img src="../../IMAGEM/${nome}.png" alt="${nome}"/></div>
         <p>Volume de Água: ${volume} Km³</p>
         <p>Profundidade Média: ${profundidade} m</p>
         <p>Biodiversidade: ${biodiversidade} espécies</p>
