@@ -86,7 +86,7 @@ function exibirCarta() {
 function atributo(atributo) {
     atributoEscolhido = atributo;
     // Exibir um novo botão para avançar a rodada
-    avacarRodada();
+    avancarRodada();
     document.getElementById("ctrl").innerHTML = `
         <button onclick="avancarRodada()">Avançar Rodada</button>
     `;
