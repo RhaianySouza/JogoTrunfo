@@ -1,4 +1,5 @@
 let jogadores = [];
+let nomesParticipante = [];
 let cartas = []; // Aqui estarão as cartas embaralhadas
 let cartasJogadores = {}; // Armazenar as cartas para cada jogador
 let cartaSelecionada = null; // A carta que foi escolhida pelo jogador da vez
@@ -33,7 +34,6 @@ function distribuirCartas() {
 
 // Função para iniciar a rodada
 function iniciarRodada() {
-    console.log(cartasJogadores[jogadores[vez]], jogadores[vez])
     if (cartasJogadores[jogadores[vez]].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
         exibirCarta(jogadores[vez]);
     }
@@ -175,6 +175,7 @@ function obterParticipantes() {
         const nomeJogador = document.getElementById(`parcipantes${b[i - 1]}`).value.trim();
         if (nomeJogador) {
             jogadores.push(b[i - 1]); // Adiciona jogador se o campo estiver preenchido
+            nomesParticipante.push(nomeJogador);// Adiciona nome se o campo estiver preenchido
             document.getElementById(`frame${i}`).style.display = 'block';
             document.getElementById(`frame${i}`).getElementsByClassName('jogador')[0].innerHTML = nomeJogador;
         }
@@ -191,21 +192,22 @@ function iniciarJogo() {
         return;
     }
     document.getElementById("ctrl").innerHTML = `
-            <h2>Escolha um Atributo ${jogadores[0]}</h2>
+            <h2>Escolha um Atributo ${nomesParticipante[0]}</h2>
             <button onclick="atributo('volume')">Volume de Água</button>
             <button onclick="atributo('profundidade')">Profundidade Média</button>
             <button onclick="atributo('biodiversidade')">Biodiversidade</button>
             <button onclick="atributo('importancia')">Importância Econômica</button>
             `;
     // Embaralhar as cartas
-    embaralharCartas();  // Usar a função global que já foi definida
+    carregarCartas();
 
     // Distribuir as cartas igualmente entre os jogadores
     distribuirCartas();
 
     // Definir o jogador que começa (aleatoriamente)
     const jogadorIniciador = jogadores[0];
-    alert(`O jogo começa com ${jogadorIniciador}`);
+    
+    alert(`O jogo começa com ${nomesParticipante[0]}`);
     
     document.getElementById("cards").style.display = "none";
     iniciarRodada();
