@@ -60,10 +60,10 @@ function exibir(carta) {
     const biodiversidade = c.biodiversidade;  // Biodiversidade
     const importancia = c.importancia;  // Importância econômica
 
-
+    //<div><img src="../IMAGEM/${nome}.jpg" alt="${nome}"/></div>
     // Exibe a carta no HTML (a classe 'back' será preenchida com as informações)
     document.querySelector(`#frame${vez + 1} .back`).innerHTML  = `<h3>${chaveCarta}</h3>
-        <div><img src="../IMAGEM/${nome}.jpg" alt="${nome}"/></div>
+        
         <p>Volume de Água: ${volume} Km³</p>
         <p>Profundidade Média: ${profundidade} m</p>
         <p>Biodiversidade: ${biodiversidade} espécies</p>
