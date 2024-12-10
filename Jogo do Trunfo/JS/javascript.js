@@ -43,7 +43,7 @@ function distribuirCartas() {
 
 // Função para iniciar a rodada
 function iniciarRodada() {
-    console.log(cartasJogadores[nomesParticipante[vez]]);
+    attrButton();
     if (cartasJogadores[nomesParticipante[vez]].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
         exibirCarta(jogadores[vez]);
     };
@@ -188,7 +188,15 @@ function obterParticipantes() {
     }
     return jogadores;
 }
-
+function attrButton(){
+    document.getElementById("ctrl").innerHTML = `
+            <h2>Escolha um Atributo ${nomesParticipante[0]}</h2>
+            <button onclick="atributo('volume')">Volume de Água</button>
+            <button onclick="atributo('profundidade')">Profundidade Média</button>
+            <button onclick="atributo('biodiversidade')">Biodiversidade</button>
+            <button onclick="atributo('importancia')">Importância Econômica</button>
+            `;
+}
 // Função para iniciar o jogo
 function iniciarJogo() {
     // Obter os jogadores e garantir que o número de jogadores seja válido
@@ -197,18 +205,12 @@ function iniciarJogo() {
         alert("O jogo deve ter entre 2 e 4 jogadores.");
         return;
     }
-    document.getElementById("ctrl").innerHTML = `
-            <h2>Escolha um Atributo ${nomesParticipante[0]}</h2>
-            <button onclick="atributo('volume')">Volume de Água</button>
-            <button onclick="atributo('profundidade')">Profundidade Média</button>
-            <button onclick="atributo('biodiversidade')">Biodiversidade</button>
-            <button onclick="atributo('importancia')">Importância Econômica</button>
-            `;
+    document.getElementById("ctrl").innerHTML = '<button type="button" onclick="iniciarRodada()">Começar</button>'
+    
     // Embaralhar as cartas e Distribui as cartas
     carregarCartas();
     
     alert(`O jogo começa com ${nomesParticipante[0]}`);
     
     document.getElementById("cards").style.display = "none";
-    iniciarRodada();
 }
