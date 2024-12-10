@@ -215,5 +215,5 @@ function iniciarJogo() {
     alert(`O jogo começa com ${jogadorIniciador}`);
 
     // Preparar a interface para a rodada
-    document.getElementById("ctrl").innerHTML ="<button type="button" onclick="iniciarRodada()">Próxima Rodada</button>";
+    document.getElementById("ctrl").innerHTML ='<button type="button" onclick="iniciarRodada()">Próxima Rodada</button>';
 }
