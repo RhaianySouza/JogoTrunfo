@@ -46,6 +46,7 @@ function iniciarRodada() {
     if(vez==jogadores.length){vez = 0}
     else{vez++};
     attrButton();
+    document.getElementById('status').innerHTML += "";
     if (cartasJogadores[nomesParticipante[vez]].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
         exibirCarta(jogadores[vez]);
     };
@@ -86,6 +87,7 @@ function exibirCarta() {
 function atributo(atributo) {
     atributoEscolhido = atributo;
     avancarRodada();
+    document.getElementById('status').innerHTML += `<p>ATRIBUTO: ${atributo}<p>`;
 }
 
 // Função para avançar a rodada
@@ -126,9 +128,9 @@ function compararCartas(atributoValor) {
                 // Verifica se o jogador tem o maior valor para o atributo
                 if (cartaJogador[a[c]] > cartaSelecionada[a[c]]) {
                     maiorValor = atributoJogador;
-                    vencedor = jogadores [i];  // Atualiza o vencedor
+                    vencedor = jogadores[i];  // Atualiza o vencedor
                     cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
-                    document.getElementById('status').innerHTML = `EMPATE ${nomesParticipante[vez]} e nomesParticipante[i]: Atributo aleatorizado: ${a[c]}`;
+                    document.getElementById('status').innerHTML += `<p>EMPATE ${nomesParticipante[vez]} e nomesParticipante[i]: Atributo aleatorizado: ${a[c]}<p>`;
                     break
                 }
             }
