@@ -49,7 +49,7 @@ function iniciarRodada() {
     };
     atributoEscolhido = null;// Limpar a seleção do atributo
     ocultarCartas();
-if(vez+1==jogadores.length){vez = 0}
+if(vez==jogadores.length){vez = 0}
 else{vez++};
 
 }
