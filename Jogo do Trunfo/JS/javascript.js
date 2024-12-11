@@ -105,7 +105,7 @@ function compararCartas(atributoValor) {
         if(i==vez){
             continue
         };
-        exibir(cartaJogador,i);
+        exibir(cartasJogadores[nomesParticipante[i]],i);
     };
     // Iterar sobre os outros jogadores 
     for (var i = 0; i < jogadores.length; i++) {
@@ -133,7 +133,7 @@ function compararCartas(atributoValor) {
                     maiorValor = atributoJogador;
                     vencedor = jogadores [i];  // Atualiza o vencedor
                     cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
-                    continue
+                    break
                 }
             }
     }
@@ -210,4 +210,4 @@ function iniciarJogo() {
     alert(`O jogo começa com ${nomesParticipante[0]}`);
     
     document.getElementById("cards").style.display = "none";
-}
+};
