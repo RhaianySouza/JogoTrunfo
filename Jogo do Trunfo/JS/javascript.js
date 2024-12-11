@@ -4,7 +4,7 @@ let cartas = {}; // Aqui estarão as cartas embaralhadas
 let cartasJogadores = {}; // Armazenar as cartas para cada jogador
 let cartaSelecionada = null; // A carta que foi escolhida pelo jogador da vez
 let atributoEscolhido = null; // Atributo escolhido para a comparação
-let vez = 0;
+let vez = -1;
 let cartasDisputadas = [];
 
 // Função para carregar as cartas do arquivo JSON
@@ -43,15 +43,14 @@ function distribuirCartas() {
 
 // Função para iniciar a rodada
 function iniciarRodada() {
+    if(vez==jogadores.length){vez = 0}
+    else{vez++};
     attrButton();
     if (cartasJogadores[nomesParticipante[vez]].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
         exibirCarta(jogadores[vez]);
     };
     atributoEscolhido = null;// Limpar a seleção do atributo
-    ocultarCartas();
-if(vez==jogadores.length){vez = 0}
-else{vez++};
-
+    ocultarCartas()
 }
 // Função para exibir a carta do jogador
 function exibir(carta,i) {
@@ -80,7 +79,6 @@ function exibirCarta() {
     const carta = cartasJogadores[nomesParticipante[vez]].shift(); // Retira a carta do jogador da vez
     cartasDisputadas.push(carta);
     cartaSelecionada = carta; // Guarda a carta para uso posterior
-
     exibir(carta,vez);
 }
 
@@ -104,14 +102,16 @@ function compararCartas(atributoValor) {
     let maiorValor = atributoValor;
 
     for(var i = 0; i< jogadores.length;i++){
-        const cartaJogador = cartasJogadores[nomesParticipante[i]].shift(); // Remove a carta da mão do jogador
+        if(i==vez){
+            continue
+        }
         exibir(cartaJogador,i);
     }
     // Iterar sobre os outros jogadores (começando do índice 1, pois o índice 0 é o jogador da vez)
     for (var i = 0; i < jogadores.length; i++) {
         if(i==vez){
-            continue;
-        };
+            continue
+        }
         // Pega a carta do jogador em questão
             const cartaJogador = cartasJogadores[nomesParticipante[i]].shift(); // Remove a carta da mão do jogador
             // Pega o valor do atributo escolhido para comparação
@@ -124,7 +124,17 @@ function compararCartas(atributoValor) {
                 vencedor = jogadores [i];  // Atualiza o vencedor
                 cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
                 continue
-        }
+            }else if(atributoJogador == maiorValor){
+                let a = ["volume","importancia","profundidade","biodiversidade"];
+                let c = Math.floor(Math.random() * a.length);               
+    
+                // Verifica se o jogador tem o maior valor para o atributo
+                if (cartaJogador[a[c]] > cartaSelecionada[a]) {
+                    maiorValor = atributoJogador;
+                    vencedor = jogadores [i];  // Atualiza o vencedor
+                    cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
+                    continue
+            }
     }
     // Se nenhum empate for encontrado, atualiza o vencedor e a carta vencedora
     atualizarVencedor(vencedor, cartaVencedora);
@@ -157,7 +167,7 @@ function obterParticipantes() {
     const b = [];
 
     while (b.length < a.length) {
-        const c = Math.floor(Math.random() * (a.length));
+        let c = Math.floor(Math.random() * (a.length));
         if (b.indexOf(c + 1) === -1) {
             b.push(c + 1);
         }
