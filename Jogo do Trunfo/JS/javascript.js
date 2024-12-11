@@ -128,6 +128,7 @@ function compararCartas(atributoValor) {
                     maiorValor = atributoJogador;
                     vencedor = jogadores [i];  // Atualiza o vencedor
                     cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
+                    document.getElementById('status').innerHTML = `EMPATE ${nomesParticipante[vez]} e nomesParticipante[i]: Atributo aleatorizado: ${a[c]}`;
                     break
                 }
             }
