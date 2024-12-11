@@ -46,6 +46,7 @@ function iniciarRodada() {
     if(vez==jogadores.length){vez = 0}
     else{vez++};
     attrButton();
+    cartasDisputadas = [] //Limpa da memoria as cartas disputadas
     document.getElementById('status').innerHTML += "";
     if (cartasJogadores[nomesParticipante[vez]].length > 0) {// Se ainda houver cartas disponíveis para o jogador da vez
         exibirCarta(jogadores[vez]);
@@ -146,12 +147,11 @@ function atualizarVencedor(vencedor, cartaVencedora) {
         // Adicionar a carta disputada na mão do vencedor
         cartasJogadores[nomesParticipante[vencedor]].push(cartasDisputadas[i]);
     }
-    cartasDisputadas = [] //Limpa da memoria as cartas disputadas
-    
     // Chama a função para iniciar a próxima rodada
     document.getElementById("ctrl").innerHTML = '<button type="button" onclick="iniciarRodada()">Próxima Rodada</button>';
     
     // Mostrar o vencedor da rodada
+    document.getElementById('status').innerHTML += `<p>VENCEDOR: ${nomesParticipante[vencedor]}}<p>`;
     alert(`O vencedor da rodada é ${nomesParticipante[vencedor]}`);
 }
 function ocultarCartas(){
