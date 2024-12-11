@@ -14,11 +14,11 @@
     "importancia": 100
   },
   "3A": {
-    "nome": "Rio Nilo",
-    "volume": 1500,
-    "profundidade": 8,
-    "biodiversidade": 2400,
-    "importancia": 90
+    "nome": "Rio Mekong",
+    "volume": 4750,
+    "profundidade": 18,
+    "biodiversidade": 3500,
+    "importancia": 80
   },
   "4A": {
     "nome": "Rio Ganges",
@@ -35,18 +35,18 @@
     "importancia": 70
   },
   "6A": {
-    "nome": "Rio Mekong",
-    "volume": 4750,
-    "profundidade": 18,
-    "biodiversidade": 3500,
-    "importancia": 80
-  },
-  "7A": {
     "nome": "Rio Danúbio",
     "volume": 6300,
     "profundidade": 22,
     "biodiversidade": 2500,
     "importancia": 65
+  },
+  "7A": {
+    "nome": "Rio Nilo",
+    "volume": 1500,
+    "profundidade": 8,
+    "biodiversidade": 2400,
+    "importancia": 90
   },
   "8A": {
     "nome": "Rio São Francisco",
@@ -56,11 +56,11 @@
     "importancia": 75
   },
   "1B": {
-    "nome": "Lago Vitória",
-    "volume": 2424,
-    "profundidade": 40,
-    "biodiversidade": 600,
-    "importancia": 75
+    "nome": "Lago Cáspio",
+    "volume": 78000,
+    "profundidade": 208,
+    "biodiversidade": 5000,
+    "importancia": 90
   },
   "2B": {
     "nome": "Lago Baikal",
@@ -77,25 +77,25 @@
     "importancia": 80
   },
   "4B": {
-    "nome": "Lago Michigan",
-    "volume": 1180,
-    "profundidade": 70,
-    "biodiversidade": 2000,
-    "importancia": 65
-  },
-  "5B": {
     "nome": "Lago Superior",
     "volume": 1200,
     "profundidade": 50,
     "biodiversidade": 2500,
     "importancia": 70
   },
+  "5B": {
+    "nome": "Lago Vitória",
+    "volume": 2424,
+    "profundidade": 40,
+    "biodiversidade": 600,
+    "importancia": 75
+  },
   "6B": {
-    "nome": "Lago Cáspio",
-    "volume": 78000,
-    "profundidade": 208,
-    "biodiversidade": 5000,
-    "importancia": 90
+    "nome": "Lago Michigan",
+    "volume": 1180,
+    "profundidade": 70,
+    "biodiversidade": 2000,
+    "importancia": 65
   },
   "7B": {
     "nome": "Lago Poyang",
@@ -112,32 +112,32 @@
     "importancia": 30
   },
   "1C": {
-    "nome": "Oceano Atlântico",
-    "volume": 310410900,
-    "profundidade": 3646,
-    "biodiversidade": 200000,
-    "importancia": 100
-  },
-  "2C": {
     "nome": "Oceano Pacífico",
     "volume": 710000000,
     "profundidade": 4280,
     "biodiversidade": 2500,
     "importancia": 100
   },
+  "2C": {
+    "nome": "Oceano Atlântico",
+    "volume": 310410900,
+    "profundidade": 3646,
+    "biodiversidade": 200000,
+    "importancia": 100
+  },
   "3C": {
+    "nome": "Mar da China Meridional",
+    "volume": 3600000,
+    "profundidade": 2800,
+    "biodiversidade": 5000,
+    "importancia": 90
+  },
+  "4C": {
     "nome": "Golfo do México",
     "volume": 2500000,
     "profundidade": 1615,
     "biodiversidade": 15000,
     "importancia": 90
-  },
-  "4C": {
-    "nome": "Mar Mediterrâneo",
-    "volume": 3735000,
-    "profundidade": 1500,
-    "biodiversidade": 17000,
-    "importancia": 80
   },
   "5C": {
     "nome": "Mar de Bering",
@@ -147,11 +147,11 @@
     "importancia": 85
   },
   "6C": {
-    "nome": "Mar da China Meridional",
-    "volume": 3600000,
-    "profundidade": 2800,
-    "biodiversidade": 5000,
-    "importancia": 90
+    "nome": "Mar Mediterrâneo",
+    "volume": 3735000,
+    "profundidade": 1500,
+    "biodiversidade": 17000,
+    "importancia": 80
   },
   "7C": {
     "nome": "Mar de Coral",
@@ -175,18 +175,18 @@
     "importancia": 75
   },
   "2D": {
-    "nome": "Água da Chuva",
-    "volume": 0.005,
-    "profundidade": 0,
-    "biodiversidade": 0,
-    "importancia": 60
+    "nome": "Aquifero de Ogallala",
+    "volume": 3000,
+    "profundidade": 60,
+    "biodiversidade": 600,
+    "importancia": 90
   },
   "3D": {
-    "nome": "Água Engarrafada",
-    "volume": 0.5,
-    "profundidade": 0,
-    "biodiversidade": 0,
-    "importancia": 65
+    "nome": "Geleira do Himalaia",
+    "volume": 1500000,
+    "profundidade": 1800,
+    "biodiversidade": 50,
+    "importancia": 85
   },
   "4D": {
     "nome": "Geleira do Alasca",
@@ -196,31 +196,31 @@
     "importancia": 80
   },
   "5D": {
-    "nome": "Geleira do Himalaia",
-    "volume": 1500000,
-    "profundidade": 1800,
-    "biodiversidade": 50,
-    "importancia": 85
+    "nome": "Oásis de Siwa",
+    "volume": 15000,
+    "profundidade": 12,
+    "biodiversidade": 200,
+    "importancia": 70
   },
   "6D": {
-    "nome": "Aquifero de Ogallala",
-    "volume": 3000,
-    "profundidade": 60,
-    "biodiversidade": 600,
-    "importancia": 150
-  },
-  "7D": {
     "nome": "Mar Morto",
     "volume": 114,
     "profundidade": 304,
     "biodiversidade": 0,
     "importancia": 50
   },
+  "7D": {
+    "nome": "Água da Chuva",
+    "volume": 0.005,
+    "profundidade": 0,
+    "biodiversidade": 0,
+    "importancia": 60
+  },
   "8D": {
-    "nome": "Oásis de Siwa",
-    "volume": 15000,
-    "profundidade": 12,
-    "biodiversidade": 200,
-    "importancia": 70
+    "nome": "Água Engarrafada",
+    "volume": 0.5,
+    "profundidade": 0,
+    "biodiversidade": 0,
+    "importancia": 65
   }
 }
