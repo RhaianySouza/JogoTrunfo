@@ -79,7 +79,7 @@ function exibirCarta() {
     const carta = cartasJogadores[nomesParticipante[vez]].shift(); // Retira a carta do jogador da vez
     cartasDisputadas.push(carta);
     cartaSelecionada = carta; // Guarda a carta para uso posterior
-    exibir(carta,vez);
+    exibir(cartaSelecionada,vez);
 }
 
 // Função chamada ao selecionar o atributo
@@ -99,19 +99,19 @@ function avancarRodada() {
 function compararCartas(atributoValor) {
     let cartaVencedora = cartaSelecionada;
     let vencedor = jogadores[vez]; // Inicialmente, assume-se que o vencedor é o jogador da vez
-    let maiorValor = atributoValor;
+    let maiorValor = atributoValor; // Atributo da carta do jogador da vez
 
-    for(var i = 0; i< jogadores.length;i++){
+    for(var i = 0; i<jogadores.length;i++){
         if(i==vez){
             continue
-        }
+        };
         exibir(cartaJogador,i);
-    }
-    // Iterar sobre os outros jogadores (começando do índice 1, pois o índice 0 é o jogador da vez)
+    };
+    // Iterar sobre os outros jogadores 
     for (var i = 0; i < jogadores.length; i++) {
         if(i==vez){
             continue
-        }
+        };
         // Pega a carta do jogador em questão
             const cartaJogador = cartasJogadores[nomesParticipante[i]].shift(); // Remove a carta da mão do jogador
             // Pega o valor do atributo escolhido para comparação
@@ -124,16 +124,17 @@ function compararCartas(atributoValor) {
                 vencedor = jogadores [i];  // Atualiza o vencedor
                 cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
                 continue
-            }else if(atributoJogador == maiorValor){
+            }while(atributoJogador == maiorValor){
                 let a = ["volume","importancia","profundidade","biodiversidade"];
                 let c = Math.floor(Math.random() * a.length);               
     
                 // Verifica se o jogador tem o maior valor para o atributo
-                if (cartaJogador[a[c]] > cartaSelecionada[a]) {
+                if (cartaJogador[a[c]] > cartaSelecionada[a[c]]) {
                     maiorValor = atributoJogador;
                     vencedor = jogadores [i];  // Atualiza o vencedor
                     cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
                     continue
+                }
             }
     }
     // Se nenhum empate for encontrado, atualiza o vencedor e a carta vencedora
