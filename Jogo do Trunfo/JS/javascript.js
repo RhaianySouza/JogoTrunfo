@@ -87,11 +87,7 @@ function exibirCarta() {
 // Função chamada ao selecionar o atributo
 function atributo(atributo) {
     atributoEscolhido = atributo;
-    // Exibir um novo botão para avançar a rodada
     avancarRodada();
-    document.getElementById("ctrl").innerHTML = `
-        <button onclick="avancarRodada()">Avançar Rodada</button>
-    `;
 }
 
 // Função para avançar a rodada
@@ -108,9 +104,6 @@ function compararCartas(atributoValor) {
     let maiorValor = atributoValor;
 
     for(var i = 0; i< jogadores.length;i++){
-        if(i==vez){
-            continue;
-        };
         const cartaJogador = cartasJogadores[nomesParticipante[i]].shift(); // Remove a carta da mão do jogador
         exibir(cartaJogador,i);
     }
@@ -121,7 +114,6 @@ function compararCartas(atributoValor) {
         };
         // Pega a carta do jogador em questão
             const cartaJogador = cartasJogadores[nomesParticipante[i]].shift(); // Remove a carta da mão do jogador
-            exibir(cartaJogador,i);
             // Pega o valor do atributo escolhido para comparação
             cartasDisputadas.push(cartaJogador);
             const atributoJogador = cartaJogador[atributoEscolhido];
@@ -132,7 +124,6 @@ function compararCartas(atributoValor) {
                 vencedor = jogadores [i];  // Atualiza o vencedor
                 cartaVencedora = cartaJogador;  // Atualiza a carta vencedora
                 continue
-            
         }
     }
     // Se nenhum empate for encontrado, atualiza o vencedor e a carta vencedora
